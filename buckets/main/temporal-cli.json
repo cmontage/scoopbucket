@@ -1,0 +1,34 @@
+{
+    "version": "1.4.1",
+    "description": "Command-line interface for running Temporal Server and interacting with Workflows, Activities, Namespaces, and other parts of Temporal",
+    "homepage": "https://docs.temporal.io/cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/temporalio/cli/releases/download/v1.4.1/temporal_cli_1.4.1_windows_amd64.zip",
+            "hash": "aa93be9a3ab71ad6732f179c77f49699dea6c3fc8b896bfe83ec73f980d569a2"
+        },
+        "arm64": {
+            "url": "https://github.com/temporalio/cli/releases/download/v1.4.1/temporal_cli_1.4.1_windows_arm64.zip",
+            "hash": "cc17298b5614fbc1ab4df088050c211d4df91670f6a1a1b42de05a8d37964c42"
+        }
+    },
+    "bin": "temporal.exe",
+    "checkver": {
+        "github": "https://github.com/temporalio/cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/temporalio/cli/releases/download/v$version/temporal_cli_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/temporalio/cli/releases/download/v$version/temporal_cli_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
