@@ -32,6 +32,18 @@
     "java": {
       "source": "https://github.com/ScoopInstaller/Java",
       "description": "Java applications"
+    },
+    "games": {
+      "source": "https://github.com/Calinou/scoop-games",
+      "description": "Games"
+    },
+    "nerd-fonts": {
+      "source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+      "description": "Programming fonts"
+    },
+    "sysinternals": {
+      "source": "https://github.com/niheaven/scoop-sysinternals",
+      "description": "Windows Sysinternals tools"
     }
   },
   "sync": {

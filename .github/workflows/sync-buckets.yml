@@ -37,6 +37,12 @@ jobs:
             repo: ScoopInstaller/Nonportable
           - name: java
             repo: ScoopInstaller/Java
+          - name: games
+            repo: Calinou/scoop-games
+          - name: nerd-fonts
+            repo: matthewjberger/scoop-nerd-fonts
+          - name: sysinternals
+            repo: niheaven/scoop-sysinternals
     
     steps:
     - name: Checkout repository
@@ -168,7 +174,7 @@ jobs:
         echo "" >> README_temp.md
         
         total_count=0
-        for bucket in main extras versions nirsoft php nonportable java; do
+        for bucket in main extras versions nirsoft php nonportable java games nerd-fonts sysinternals; do
           if [ -d "buckets/$bucket" ]; then
             count=$(find buckets/$bucket -name "*.json" | wc -l)
             if [ "$count" -gt 0 ]; then
