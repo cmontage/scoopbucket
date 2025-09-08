@@ -1,0 +1,128 @@
+name: Sync Scoop Official Buckets
+
+on:
+  schedule:
+    # 每天北京时间早上8点运行 (UTC时间0点)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # 允许手动触发
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  sync-buckets:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        bucket:
+          - name: main
+            repo: ScoopInstaller/Main
+          - name: extras  
+            repo: ScoopInstaller/Extras
+          - name: versions
+            repo: ScoopInstaller/Versions
+          - name: nirsoft
+            repo: ScoopInstaller/Nirsoft
+          - name: php
+            repo: ScoopInstaller/PHP
+          - name: nerd-fonts
+            repo: ScoopInstaller/Nerd-Fonts
+          - name: nonportable
+            repo: ScoopInstaller/Nonportable
+          - name: java
+            repo: ScoopInstaller/Java
+          - name: games
+            repo: ScoopInstaller/Games
+          - name: sysinternals
+            repo: ScoopInstaller/Sysinternals
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    
+    - name: Setup Git
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+    
+    - name: Create bucket directory
+      run: |
+        mkdir -p buckets/${{ matrix.bucket.name }}
+    
+    - name: Download bucket content
+      run: |
+        # 下载官方存储库的bucket目录内容
+        curl -H "Accept: application/vnd.github.v3+json" \
+             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+             "https://api.github.com/repos/${{ matrix.bucket.repo }}/contents/bucket" \
+             > bucket_files.json
+        
+        # 解析JSON并下载所有.json文件
+        cat bucket_files.json | jq -r '.[] | select(.name | endswith(".json")) | .download_url' | while read url; do
+          filename=$(basename "$url")
+          echo "Downloading $filename..."
+          curl -L "$url" -o "buckets/${{ matrix.bucket.name }}/$filename"
+        done
+    
+    - name: Commit changes
+      run: |
+        git add buckets/${{ matrix.bucket.name }}/
+        if git diff --cached --quiet; then
+          echo "No changes to commit for ${{ matrix.bucket.name }}"
+        else
+          git commit -m "Update ${{ matrix.bucket.name }} bucket - $(date '+%Y-%m-%d %H:%M:%S')"
+        fi
+    
+    - name: Push changes
+      run: |
+        git push origin main || echo "Nothing to push for ${{ matrix.bucket.name }}"
+
+  update-readme:
+    needs: sync-buckets
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+        
+    - name: Pull latest changes
+      run: git pull origin main
+    
+    - name: Update README timestamp
+      run: |
+        current_time=$(TZ=Asia/Shanghai date '+%Y年%m月%d日 %H:%M:%S')
+        sed -i "s/最后更新时间: .*/最后更新时间: $current_time/" README.md
+    
+    - name: Generate statistics
+      run: |
+        echo "" >> README.md
+        echo "## 统计信息" >> README.md
+        echo "" >> README.md
+        for bucket in main extras versions nirsoft php nerd-fonts nonportable java games sysinternals; do
+          if [ -d "buckets/$bucket" ]; then
+            count=$(find buckets/$bucket -name "*.json" | wc -l)
+            echo "- $bucket: $count 个应用程序" >> README.md
+          fi
+        done
+        echo "" >> README.md
+        echo "总计: $(find buckets -name "*.json" | wc -l) 个应用程序" >> README.md
+    
+    - name: Commit README update
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+        git add README.md
+        if git diff --cached --quiet; then
+          echo "No changes to commit for README"
+        else
+          git commit -m "Update README with latest statistics - $(date '+%Y-%m-%d %H:%M:%S')"
+          git push origin main
+        fi

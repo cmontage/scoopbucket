@@ -1,0 +1,31 @@
+{
+    "version": "2.16",
+    "homepage": "https://www.nirsoft.net/utils/web_browser_password.html",
+    "url": "https://www.nirsoft.net/toolsdownload/webbrowserpassview.zip#dl.zip_",
+    "bin": "WebBrowserPassView.exe",
+    "shortcuts": [
+        [
+            "WebBrowserPassView.exe",
+            "NirSoft\\WebBrowserPassView"
+        ]
+    ],
+    "persist": [
+        "webbrowserpassview_lng.ini",
+        "webbrowserpassview.cfg"
+    ],
+    "hash": "efc87df3d31afe41ae5c47ca06b87860eeaa36c6533b8c6731b98126c44d3094",
+    "description": "Recover lost passwords from your Web browser.",
+    "license": "Freeware",
+    "notes": "If this application is useful to you, please consider donating to NirSoft - https://www.nirsoft.net/donate.html",
+    "checkver": {
+        "url": "https://www.nirsoft.net/pad/webbrowserpassview.xml",
+        "xpath": "/XML_DIZ_INFO/Program_Info/Program_Version"
+    },
+    "autoupdate": {
+        "url": "https://www.nirsoft.net/toolsdownload/webbrowserpassview.zip"
+    },
+    "pre_install": [
+        "$zip=(Get-ChildItem $dir\\\\webbrowserpassview*).Name",
+        "7z x $dir\\\\$zip -p'wbpv28821@' $('-o' + $dir) | Out-Null"
+    ]
+}

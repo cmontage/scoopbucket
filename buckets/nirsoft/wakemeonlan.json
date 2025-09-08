@@ -1,0 +1,42 @@
+{
+    "version": "1.93",
+    "homepage": "https://www.nirsoft.net/utils/wake_on_lan.html",
+    "bin": "WakeMeOnLan.exe",
+    "shortcuts": [
+        [
+            "WakeMeOnLan.exe",
+            "NirSoft\\WakeMeOnLan"
+        ]
+    ],
+    "persist": [
+        "wakemeonlan_lng.ini",
+        "wakemeonlan.cfg"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/wakemeonlan-x64.zip",
+            "hash": "995ceefb951c5daafda1cbe160836b7631947192ff10e13fdcd3230dbf201786"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/wakemeonlan.zip",
+            "hash": "2339f1f0ee2af7a1f50814a814dfce162f6df5c8f84f68a8ffb3ca0bf29a97db"
+        }
+    },
+    "description": "Turn on one or more computers remotely by sending Wake-on-LAN (WOL) packet",
+    "license": "Freeware",
+    "notes": "If this application is useful to you, please consider donating to NirSoft - https://www.nirsoft.net/donate.html",
+    "checkver": {
+        "url": "https://www.nirsoft.net/pad/wakemeonlan.xml",
+        "xpath": "/XML_DIZ_INFO/Program_Info/Program_Version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/wakemeonlan-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/wakemeonlan.zip"
+            }
+        }
+    }
+}

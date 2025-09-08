@@ -1,0 +1,43 @@
+{
+    "version": "2.6.4",
+    "description": "Open and extensible continuous delivery solution for Kubernetes.",
+    "homepage": "https://fluxcd.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v2.6.4/flux_2.6.4_windows_amd64.zip",
+            "hash": "991ecb38ac9013b02170a0c2fae116150510da80c426863ce6e3b63e3f8b55b1"
+        },
+        "arm64": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v2.6.4/flux_2.6.4_windows_arm64.zip",
+            "hash": "832d3916953c30fd3f59061b21975d86cc44ae90ddd60c7f5fb4f526fb9ee2ed"
+        },
+        "32bit": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v2.6.4/flux_2.6.4_windows_386.zip",
+            "hash": "0344fcdd5aa78ab3c12fc97a9bfd50c8ceb776379a2029d34c98d974a0d9ba37"
+        }
+    },
+    "bin": "flux.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/258469100/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "flux_([\\d.]+)_windows_amd64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_arm64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/flux_$version_checksums.txt"
+        }
+    },
+    "notes": "For Flux v1, please install 'versions/fluxctl' instead."
+}

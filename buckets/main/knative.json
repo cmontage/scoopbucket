@@ -1,0 +1,27 @@
+{
+    "homepage": "https://knative.dev",
+    "license": "Apache-2.0",
+    "description": "The Knative client kn is your door to the Knative world. It allows you to create Knative resources interactively from the command line or from within scripts.",
+    "version": "1.19.3",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/knative/client/releases/download/knative-v1.19.3/kn-windows-amd64.exe#/kn.exe",
+            "hash": "fecfd6ed69f06b529a6d8c209fb1d49feef57963275e9e96c74c30b046cc85c1"
+        }
+    },
+    "bin": "kn.exe",
+    "checkver": {
+        "url": "https://github.com/knative/client/releases",
+        "regex": "knative-v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/knative/client/releases/download/knative-v$version/kn-windows-amd64.exe#/kn.exe",
+                "hash": {
+                    "url": "https://github.com/knative/client/releases/download/knative-v$version/checksums.txt"
+                }
+            }
+        }
+    }
+}

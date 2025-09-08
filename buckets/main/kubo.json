@@ -1,0 +1,36 @@
+{
+    "version": "0.37.0",
+    "description": "A peer-to-peer hypermedia protocol to make the web faster, safer, and more open.",
+    "homepage": "https://ipfs.tech/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://dist.ipfs.tech/kubo/v0.37.0/kubo_v0.37.0_windows-amd64.zip",
+            "hash": "sha512:63f4ad44e2c5ea7f4b30a64b1c598b765d99bd13baef2d8968f50e572dee8e58742d79f4032be5e14bf83fd967b715d575effc97b1a59d8f466c9f8ef34c26b6"
+        },
+        "arm64": {
+            "url": "https://dist.ipfs.tech/kubo/v0.37.0/kubo_v0.37.0_windows-arm64.zip",
+            "hash": "sha512:0a474dc01b79d23ff7ef024fc306df1de01683e573f2a8515ca9f836e95da8e9e1b26d04d8cbdba9f1d985bb69a29cb0bda9f47edb1b38a6ef7a71dec8781d77"
+        }
+    },
+    "extract_dir": "kubo",
+    "bin": "ipfs.exe",
+    "checkver": {
+        "url": "https://dist.ipfs.tech/kubo/versions",
+        "reverse": true,
+        "regex": "(?m)^v([\\d.]*)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dist.ipfs.tech/kubo/v$version/kubo_v$version_windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://dist.ipfs.tech/kubo/v$version/kubo_v$version_windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        }
+    }
+}

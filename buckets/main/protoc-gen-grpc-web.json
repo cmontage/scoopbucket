@@ -1,0 +1,26 @@
+{
+    "version": "2.0.1",
+    "description": "gRPC javascript code generator plugin for Web Clients",
+    "homepage": "https://grpc.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/grpc/grpc-web/releases/download/2.0.1/protoc-gen-grpc-web-2.0.1-windows-x86_64.exe#/protoc-gen-grpc-web.exe",
+            "hash": "9ca8a59e5f3ec24291ee7d9d4a71f0c45a2b4989cbd9bd411b62c51ec748444d"
+        }
+    },
+    "bin": "protoc-gen-grpc-web.exe",
+    "checkver": {
+        "github": "https://github.com/grpc/grpc-web"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/grpc/grpc-web/releases/download/$version/protoc-gen-grpc-web-$version-windows-x86_64.exe#/protoc-gen-grpc-web.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

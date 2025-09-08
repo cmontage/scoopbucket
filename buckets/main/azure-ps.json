@@ -1,0 +1,34 @@
+{
+    "version": "14.4.0.40132",
+    "description": "PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.",
+    "homepage": "https://aka.ms/azpsdocs",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Azure/azure-powershell/releases/download/v14.4.0-September2025/Az-Cmdlets-14.4.0.40132-x64.msi",
+            "hash": "6a8ebafab5633220fe016bb833f39312ffff5e25706c951eec80861267d8b507"
+        },
+        "32bit": {
+            "url": "https://github.com/Azure/azure-powershell/releases/download/v14.4.0-September2025/Az-Cmdlets-14.4.0.40132-x86.msi",
+            "hash": "c2a9cea16a6ecd248e6fc0652e93e70d513caaaf5fc07548d8989b2d6d57381a"
+        }
+    },
+    "extract_dir": "WindowsPowerShell\\Modules",
+    "psmodule": {
+        "name": "AzureRM"
+    },
+    "checkver": {
+        "url": "https://api.github.com/repositories/23891194/releases",
+        "regex": "download/v(?<release>[^/]+)/Az-Cmdlets-([0-9.]+)-x64[.]msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x64.msi"
+            },
+            "32bit": {
+                "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x86.msi"
+            }
+        }
+    }
+}
