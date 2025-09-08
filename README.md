@@ -47,7 +47,10 @@ buckets/
 ├── games/          # 游戏清单
 ├── nerd-fonts/     # 字体清单
 └── sysinternals/   # Sysinternals工具清单
-```
+
+scripts/            # 所有仓库的脚本文件（按仓库名前缀命名）
+├── appname/        # 应用程序脚本
+└── ...             # 
 
 ## 许可证
 

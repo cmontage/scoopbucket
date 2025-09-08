@@ -86,32 +86,62 @@ jobs:
         mkdir -p temp_sync
         cd temp_sync
         
-        # 克隆源仓库（仅bucket目录）
+        # 克隆源仓库（仅bucket和scripts目录）
         git clone --filter=blob:none --sparse https://github.com/${{ matrix.bucket.repo }}.git source_repo
         cd source_repo
-        git sparse-checkout set bucket
+        git sparse-checkout set bucket scripts
         
-        # 统计文件数量
+        # 统计文件数量并复制内容
+        bucket_files=0
+        script_files=0
+        
+        # 创建目标目录（强制创建，即使已存在）
+        mkdir -p ../../buckets/${{ matrix.bucket.name }}
+        mkdir -p ../../scripts
+        
+        # 处理bucket目录
         if [ -d "bucket" ]; then
-          total_files=$(find bucket -name "*.json" | wc -l)
-          echo "Found $total_files JSON files in source repository"
+          bucket_files=$(find bucket -name "*.json" | wc -l)
+          echo "Found $bucket_files JSON files in bucket directory"
           
-          # 创建目标目录（强制创建，即使已存在）
-          mkdir -p ../../buckets/${{ matrix.bucket.name }}
-          
-          # 清空目标目录以确保同步准确性
+          # 清空目标bucket目录以确保同步准确性
           rm -f ../../buckets/${{ matrix.bucket.name }}/*.json 2>/dev/null || true
           
           # 复制所有JSON文件
-          echo "Copying JSON files..."
+          echo "Copying bucket JSON files..."
           find bucket -name "*.json" -exec cp {} ../../buckets/${{ matrix.bucket.name }}/ \;
           
-          # 验证复制结果
-          copied_files=$(find ../../buckets/${{ matrix.bucket.name }} -name "*.json" | wc -l)
-          echo "Successfully copied $copied_files files to buckets/${{ matrix.bucket.name }}"
+          # 验证bucket复制结果
+          copied_bucket_files=$(find ../../buckets/${{ matrix.bucket.name }} -name "*.json" | wc -l)
+          echo "Successfully copied $copied_bucket_files bucket files to buckets/${{ matrix.bucket.name }}"
         else
           echo "No bucket directory found in source repository"
         fi
+        
+        # 处理scripts目录
+        if [ -d "scripts" ]; then
+          script_files=$(find scripts -type f | wc -l)
+          echo "Found $script_files script files in scripts directory"
+          
+          # 复制所有脚本文件到统一的scripts目录（添加仓库前缀避免冲突）
+          echo "Copying script files..."
+          for script_file in $(find scripts -type f); do
+            # 获取相对路径并添加仓库前缀
+            rel_path=${script_file#scripts/}
+            target_path="../../scripts/${{ matrix.bucket.name }}_${rel_path}"
+            mkdir -p "$(dirname "$target_path")"
+            cp "$script_file" "$target_path"
+          done
+          
+          # 验证scripts复制结果
+          copied_script_files=$(find ../../scripts -name "${{ matrix.bucket.name }}_*" | wc -l)
+          echo "Successfully copied $copied_script_files script files to scripts/ with ${{ matrix.bucket.name }}_ prefix"
+        else
+          echo "No scripts directory found in source repository"
+        fi
+        
+        total_files=$((bucket_files + script_files))
+        echo "Total files synced for ${{ matrix.bucket.name }}: $total_files ($bucket_files bucket + $script_files scripts)"
         
         # 清理临时目录
         cd ../..
@@ -121,7 +151,7 @@ jobs:
       if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
       run: |
         # 先添加所有变化到Git
-        git add buckets/${{ matrix.bucket.name }}/
+        git add buckets/${{ matrix.bucket.name }}/ scripts/
         
         # 检查是否有staged变化
         if git diff --cached --quiet; then
@@ -130,10 +160,12 @@ jobs:
           echo "Changes detected for ${{ matrix.bucket.name }}, committing..."
           
           # 统计文件数量
-          file_count=$(find buckets/${{ matrix.bucket.name }} -name "*.json" | wc -l)
+          bucket_count=$(find buckets/${{ matrix.bucket.name }} -name "*.json" 2>/dev/null | wc -l)
+          script_count=$(find scripts -name "${{ matrix.bucket.name }}_*" 2>/dev/null | wc -l)
+          total_count=$((bucket_count + script_count))
           
-          git commit -m "Update ${{ matrix.bucket.name }} bucket - $file_count files ($(date '+%Y-%m-%d %H:%M:%S'))"
-          echo "Committed changes for ${{ matrix.bucket.name }}"
+          git commit -m "Update ${{ matrix.bucket.name }} - $total_count files ($bucket_count bucket + $script_count scripts) ($(date '+%Y-%m-%d %H:%M:%S'))"
+          echo "Committed changes for ${{ matrix.bucket.name }}: $total_count files"
         fi
 
     - name: Push changes
@@ -193,17 +225,24 @@ jobs:
         echo "" >> README_temp.md
         
         total_count=0
+        total_scripts=$(find scripts -type f | wc -l)
         for bucket in main extras versions nirsoft php nonportable java games nerd-fonts sysinternals; do
           if [ -d "buckets/$bucket" ]; then
-            count=$(find buckets/$bucket -name "*.json" | wc -l)
-            if [ "$count" -gt 0 ]; then
-              echo "- $bucket: $count 个应用程序" >> README_temp.md
-              total_count=$((total_count + count))
+            bucket_count=$(find buckets/$bucket -name "*.json" | wc -l)
+            script_count=$(find scripts -name "${bucket}_*" 2>/dev/null | wc -l)
+            total_bucket_count=$((bucket_count + script_count))
+            if [ "$bucket_count" -gt 0 ]; then
+              if [ "$script_count" -gt 0 ]; then
+                echo "- $bucket: $bucket_count 个应用程序 + $script_count 个脚本" >> README_temp.md
+              else
+                echo "- $bucket: $bucket_count 个应用程序" >> README_temp.md
+              fi
+              total_count=$((total_count + bucket_count))
             fi
           fi
         done
         echo "" >> README_temp.md
-        echo "总计: $total_count 个应用程序" >> README_temp.md
+        echo "总计: $total_count 个应用程序 + $total_scripts 个脚本" >> README_temp.md
         
         # 替换原文件
         mv README_temp.md README.md
