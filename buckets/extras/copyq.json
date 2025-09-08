@@ -1,0 +1,32 @@
+{
+    "version": "11.0.0",
+    "description": "Clipboard manager",
+    "homepage": "https://hluk.github.io/CopyQ/",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hluk/CopyQ/releases/download/v11.0.0/copyq-11.0.0.zip",
+            "hash": "f43659e75e0c92266b13ed126761393f7465f283a8fdb3942622baafbef9b9eb"
+        }
+    },
+    "extract_dir": "copyq-11.0.0",
+    "bin": "copyq.exe",
+    "shortcuts": [
+        [
+            "copyq.exe",
+            "CopyQ"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "github": "https://github.com/hluk/CopyQ"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/hluk/CopyQ/releases/download/v$version/copyq-$version.zip"
+            }
+        },
+        "extract_dir": "copyq-$version"
+    }
+}

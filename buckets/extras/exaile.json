@@ -1,0 +1,28 @@
+{
+    "version": "4.1.4",
+    "description": "A music player with a simple interface and powerful music management capabilities.",
+    "homepage": "https://www.exaile.org/",
+    "license": "GPL-2.0-only",
+    "url": "https://github.com/exaile/exaile/releases/download/4.1.4/exaile-4.1.4.exe#/dl.7z",
+    "hash": "212dd56c9d67c637899aa3524817b2ff3d69e0eb607374877360c23193acfa70",
+    "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
+    "bin": "exaile.exe",
+    "shortcuts": [
+        [
+            "exaile.exe",
+            "Exaile",
+            "",
+            "data\\images\\exaile.ico"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/exaile/exaile"
+    },
+    "autoupdate": {
+        "url": "https://github.com/exaile/exaile/releases/download/$version/exaile-$version.exe#/dl.7z",
+        "hash": {
+            "url": "https://github.com/exaile/exaile/releases/tag/$version",
+            "regex": "SHA256 \\($basename\\) = $sha256"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "version": "1.13.1",
+    "description": "Modern, lightweight and multi-cluster Kubernetes GUI",
+    "homepage": "https://aptakube.com/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://aptakube.com/legal/eula"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aptakube/aptakube/releases/download/1.13.1/Aptakube_1.13.1_x64.zip",
+            "hash": "9a65f49456bd2d36a21616c815e3ef3a32ad3417cb7dc6855f4518fdd68d2c5c"
+        }
+    },
+    "bin": [
+        [
+            "Aptakube.exe",
+            "aptakube"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Aptakube.exe",
+            "Aptakube"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/aptakube/aptakube"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aptakube/aptakube/releases/download/$version/Aptakube_$version_x64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

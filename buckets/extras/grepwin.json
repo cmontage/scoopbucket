@@ -1,0 +1,59 @@
+{
+    "version": "2.1.11",
+    "description": "Regular expression search and replace tool for Windows.",
+    "homepage": "https://tools.stefankueng.com/grepWin.html",
+    "license": "GPL-3.0-only",
+    "notes": "Run '$dir\\install-context.reg' to add grepWin to right-click context menu.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/stefankueng/grepWin/releases/download/2.1.11/grepWin-x64-2.1.11_portable.zip",
+            "hash": "41c010d973365a53939d0440862dadf665a7acf7081ccb9e40dbdc11f1ac8ed0"
+        },
+        "32bit": {
+            "url": "https://github.com/stefankueng/grepWin/releases/download/2.1.11/grepWin-2.1.11_portable.zip",
+            "hash": "497512822f38e618a6719ab4ebd62f87e63d7cf94ba2cba27deaee303c8d94a4"
+        }
+    },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\grepWin*.exe\" | Rename-Item -NewName 'grepWin.exe'",
+        "if (-not (Test-Path \"$persist_dir\\grepwin.ini\")) {",
+        "    Set-Content \"$dir\\grepwin.ini\" (@('[global]', '[Software\\grepWin\\History]') -join \"`r`n\") -Encoding ASCII",
+        "}"
+    ],
+    "post_install": [
+        "$app_path = \"$dir\\grepWin.exe\".Replace('\\', '\\\\')",
+        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\extras\\scripts\\grepwin\\$_\") {",
+        "        $content = Get-Content \"$bucketsdir\\extras\\scripts\\grepwin\\$_\"",
+        "        $content = $content.Replace('$app_path', $app_path)",
+        "        if ($global) {",
+        "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        }",
+        "    }",
+        "    $content | Set-Content -Path \"$dir\\$_\" -Encoding ascii",
+        "}"
+    ],
+    "bin": "grepWin.exe",
+    "shortcuts": [
+        [
+            "grepWin.exe",
+            "grepWin",
+            "/portable"
+        ]
+    ],
+    "persist": "grepwin.ini",
+    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
+    "checkver": {
+        "github": "https://github.com/stefankueng/grepWin"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-x64-$version_portable.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-$version_portable.zip"
+            }
+        }
+    }
+}

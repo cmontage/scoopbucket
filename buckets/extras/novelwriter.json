@@ -1,0 +1,34 @@
+{
+    "version": "2.7.4",
+    "description": "A markdown-like editor for novels",
+    "homepage": "https://novelwriter.io/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vkbo/novelWriter/releases/download/v2.7.4/novelwriter-2.7.4-amd64-setup.exe",
+            "hash": "1665c97053de4b8e49a6a2ab58bb52f2a267721e08ffe2d5f5f3ac2555a0fb75"
+        }
+    },
+    "innosetup": true,
+    "shortcuts": [
+        [
+            "pythonw.exe",
+            "novelWriter",
+            "novelWriter.pyw",
+            "novelwriter.ico"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/vkbo/novelWriter"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vkbo/novelWriter/releases/download/v$version/novelwriter-$version-amd64-setup.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

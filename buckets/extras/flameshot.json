@@ -1,0 +1,38 @@
+{
+    "version": "13.1.0",
+    "description": "Powerful yet simple to use screenshot software",
+    "homepage": "https://flameshot.org",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/flameshot-org/flameshot/releases/download/v13.1.0/flameshot-13.1.0-win64.zip",
+            "hash": "89ede2a9e19af71f222f5e1cf2b6781488eda501e234b5786aaba825fbd078d1",
+            "extract_dir": "flameshot-13.1.0-win64"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\bin\\vc_redi*.exe\"",
+    "bin": "bin\\flameshot.exe",
+    "shortcuts": [
+        [
+            "bin\\flameshot.exe",
+            "Flameshot"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/flameshot-org/flameshot"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/flameshot-org/flameshot/releases/download/v$version/flameshot-$version-win64.zip",
+                "extract_dir": "flameshot-$version-win64"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        }
+    }
+}
