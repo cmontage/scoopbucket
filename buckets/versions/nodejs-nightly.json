@@ -1,0 +1,50 @@
+{
+    "version": "25.0.0-nightly20250908b4af647920",
+    "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications. (nightly verison)",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://nodejs.org/download/nightly/v25.0.0-nightly20250908b4af647920/node-v25.0.0-nightly20250908b4af647920-win-x64.7z",
+            "hash": "86d9e58865c6f1caea2cec49e0d05589cb39a7a936420722a561218dd2fe94b4",
+            "extract_dir": "node-v25.0.0-nightly20250908b4af647920-win-x64"
+        },
+        "arm64": {
+            "url": "https://nodejs.org/download/nightly/v25.0.0-nightly20250908b4af647920/node-v25.0.0-nightly20250908b4af647920-win-arm64.7z",
+            "hash": "a9be071d966b6fd02850b54e72b24c9cd144e34fe4649181431a8b23f1bc552c",
+            "extract_dir": "node-v25.0.0-nightly20250908b4af647920-win-arm64"
+        }
+    },
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "checkver": {
+        "url": "https://nodejs.org/download/nightly/index.json",
+        "jsonpath": "$[0].version",
+        "regex": "v([\\d.]+-nightly(?<date>[\\d]{8})(?<commit>[\\w]+))"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nodejs.org/download/nightly/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "arm64": {
+                "url": "https://nodejs.org/download/nightly/v$version/node-v$version-win-arm64.7z",
+                "extract_dir": "node-v$version-win-arm64"
+            }
+        },
+        "hash": {
+            "url": "https://nodejs.org/download/nightly/v$version/SHASUMS256.txt"
+        }
+    }
+}

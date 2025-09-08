@@ -1,0 +1,45 @@
+{
+    "version": "1.24.5",
+    "description": "Git with a cup of tea, painless self-hosted git service. (beta channel)",
+    "homepage": "https://gitea.io/",
+    "license": "MIT",
+    "notes": "Run 'gitea web -c \"$persist_dir\\custom\\conf\\app.ini\"' to start the webserver",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/go-gitea/gitea/releases/download/v1.24.5/gitea-1.24.5-windows-4.0-amd64.exe#/gitea.exe",
+            "hash": "f4d43280dedba49ee9c9e321545c25183a43b078d64a793cd3eca468aa9e0f69"
+        },
+        "32bit": {
+            "url": "https://github.com/go-gitea/gitea/releases/download/v1.24.5/gitea-1.24.5-windows-4.0-386.exe#/gitea.exe",
+            "hash": "0e3baa59578cf8b3251c93cdd1fcba492fb270fd9fed4dde8c10572ba36a2860"
+        }
+    },
+    "post_install": [
+        "echo 'Creating $persist_dir\\custom\\conf.app.ini'",
+        "if(!(test-path \"$persist_dir\\custom\\conf\")) { mkdir \"$persist_dir\\custom\\conf\" > $null }",
+        "if(!(test-path \"$persist_dir\\custom\\conf\\app.ini\")) {",
+        "    $gitea = \"[database]`nPATH = $persist_dir/data/gitea.db\"",
+        "    $gitea += \"`n[repository]`nROOT = $persist_dir/repositories\"",
+        "    $gitea += \"`n[log]`nROOT_PATH = $persist_dir/log\"",
+        "    echo $gitea | % {$_.replace(\"\\\",\"/\") } | out-file -encoding oem \"$persist_dir\\custom\\conf\\app.ini\"",
+        "}"
+    ],
+    "bin": "gitea.exe",
+    "checkver": {
+        "url": "https://github.com/go-gitea/gitea/releases",
+        "regex": ">v([\\d.]+(-\\w+)?)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-amd64.exe#/gitea.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-386.exe#/gitea.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
