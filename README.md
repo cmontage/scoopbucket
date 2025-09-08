@@ -11,11 +11,8 @@
 | versions | 不同版本的应用程序 | https://github.com/ScoopInstaller/Versions |
 | nirsoft | NirSoft工具 | https://github.com/ScoopInstaller/Nirsoft |
 | php | PHP相关 | https://github.com/ScoopInstaller/PHP |
-| nerd-fonts | 字体 | https://github.com/ScoopInstaller/Nerd-Fonts |
 | nonportable | 非便携式应用 | https://github.com/ScoopInstaller/Nonportable |
 | java | Java应用 | https://github.com/ScoopInstaller/Java |
-| games | 游戏 | https://github.com/ScoopInstaller/Games |
-| sysinternals | Windows Sysinternals工具 | https://github.com/ScoopInstaller/Sysinternals |
 
 ## 使用方法
 
@@ -42,11 +39,8 @@ buckets/
 ├── versions/       # 不同版本应用程序清单
 ├── nirsoft/        # NirSoft工具清单
 ├── php/            # PHP相关清单
-├── nerd-fonts/     # 字体清单
 ├── nonportable/    # 非便携式应用清单
-├── java/           # Java应用清单
-├── games/          # 游戏清单
-└── sysinternals/   # Sysinternals工具清单
+└── java/           # Java应用清单
 ```
 
 ## 许可证

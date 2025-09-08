@@ -25,10 +25,6 @@
       "source": "https://github.com/ScoopInstaller/PHP",
       "description": "PHP related tools"
     },
-    "nerd-fonts": {
-      "source": "https://github.com/ScoopInstaller/Nerd-Fonts",
-      "description": "Programming fonts"
-    },
     "nonportable": {
       "source": "https://github.com/ScoopInstaller/Nonportable",
       "description": "Non-portable applications"
@@ -36,14 +32,6 @@
     "java": {
       "source": "https://github.com/ScoopInstaller/Java",
       "description": "Java applications"
-    },
-    "games": {
-      "source": "https://github.com/ScoopInstaller/Games",
-      "description": "Games"
-    },
-    "sysinternals": {
-      "source": "https://github.com/ScoopInstaller/Sysinternals",
-      "description": "Windows Sysinternals tools"
     }
   },
   "sync": {
