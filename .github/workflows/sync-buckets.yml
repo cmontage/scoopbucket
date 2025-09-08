@@ -220,11 +220,64 @@ jobs:
         
         total_count=0
         total_scripts=$(find scripts -type f 2>/dev/null | wc -l)
+        
+        # 统计每个bucket的应用程序和脚本数量
         for bucket in main extras versions nirsoft php nonportable java games nerd-fonts sysinternals; do
           if [ -d "buckets/$bucket" ]; then
             bucket_count=$(find buckets/$bucket -name "*.json" | wc -l)
             if [ "$bucket_count" -gt 0 ]; then
-              echo "- $bucket: $bucket_count 个应用程序" >> README_temp.md
+              # 根据bucket统计对应的脚本数量
+              case "$bucket" in
+                "main")
+                  repo_name="ScoopInstaller/Main"
+                  ;;
+                "extras")
+                  repo_name="ScoopInstaller/Extras"
+                  ;;
+                "versions")
+                  repo_name="ScoopInstaller/Versions"
+                  ;;
+                "nirsoft")
+                  repo_name="ScoopInstaller/Nirsoft"
+                  ;;
+                "php")
+                  repo_name="ScoopInstaller/PHP"
+                  ;;
+                "nonportable")
+                  repo_name="ScoopInstaller/Nonportable"
+                  ;;
+                "java")
+                  repo_name="ScoopInstaller/Java"
+                  ;;
+                "games")
+                  repo_name="Calinou/scoop-games"
+                  ;;
+                "nerd-fonts")
+                  repo_name="matthewjberger/scoop-nerd-fonts"
+                  ;;
+                "sysinternals")
+                  repo_name="niheaven/scoop-sysinternals"
+                  ;;
+              esac
+              
+              # 临时克隆源仓库检查脚本数量
+              temp_dir="temp_count_$bucket"
+              script_count=0
+              if git clone --depth 1 --filter=blob:none --sparse https://github.com/$repo_name.git $temp_dir 2>/dev/null; then
+                cd $temp_dir
+                git sparse-checkout set scripts
+                if [ -d "scripts" ]; then
+                  script_count=$(find scripts -type f | wc -l)
+                fi
+                cd ..
+                rm -rf $temp_dir
+              fi
+              
+              if [ "$script_count" -gt 0 ]; then
+                echo "- $bucket: $bucket_count 个应用程序 + $script_count 个脚本" >> README_temp.md
+              else
+                echo "- $bucket: $bucket_count 个应用程序" >> README_temp.md
+              fi
               total_count=$((total_count + bucket_count))
             fi
           fi
