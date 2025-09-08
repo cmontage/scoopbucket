@@ -1,0 +1,34 @@
+{
+    "version": "1.0.364",
+    "homepage": "https://www.10xeditor.com/index.htm",
+    "description": "A fast performing, feature packed C++ editor/IDE.",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.10xeditor.com/License.htm"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.puredevsoftware.com/download.php?file=10xInstaller.exe#/setup.exe",
+            "hash": "acc1a498d2dd7a80a22796b480739094affefb5db43b7e7c4ea81a8811f67485"
+        }
+    },
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/silent'"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args @('/silent', '/uninstall'); Start-Sleep -Seconds 2"
+    ],
+    "checkver": {
+        "url": "https://www.10xeditor.com/versions.htm",
+        "regex": "Version\\s\\(([\\d.]+)\\)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.puredevsoftware.com/download.php?file=10xInstaller.exe#/setup.exe"
+            }
+        }
+    }
+}
