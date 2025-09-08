@@ -96,8 +96,11 @@ jobs:
           total_files=$(find bucket -name "*.json" | wc -l)
           echo "Found $total_files JSON files in source repository"
           
-          # 创建目标目录
+          # 创建目标目录（强制创建，即使已存在）
           mkdir -p ../../buckets/${{ matrix.bucket.name }}
+          
+          # 清空目标目录以确保同步准确性
+          rm -f ../../buckets/${{ matrix.bucket.name }}/*.json 2>/dev/null || true
           
           # 复制所有JSON文件
           echo "Copying JSON files..."
@@ -117,12 +120,14 @@ jobs:
     - name: Commit changes for this bucket
       if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
       run: |
-        # 检查是否有变化
-        if git diff --quiet buckets/${{ matrix.bucket.name }}/; then
+        # 先添加所有变化到Git
+        git add buckets/${{ matrix.bucket.name }}/
+        
+        # 检查是否有staged变化
+        if git diff --cached --quiet; then
           echo "No changes detected for ${{ matrix.bucket.name }}"
         else
           echo "Changes detected for ${{ matrix.bucket.name }}, committing..."
-          git add buckets/${{ matrix.bucket.name }}/
           
           # 统计文件数量
           file_count=$(find buckets/${{ matrix.bucket.name }} -name "*.json" | wc -l)
