@@ -36,26 +36,58 @@ function Sync-Bucket {
     }
     
     try {
-        # 获取存储库的bucket目录内容
-        $apiUrl = "https://api.github.com/repos/$Repo/contents/bucket"
-        Write-Host "Getting file list..."
+        # 获取存储库的bucket目录内容 - 支持分页处理
+        $allJsonFiles = @()
+        $page = 1
+        $perPage = 1000
         
-        $response = Invoke-RestMethod -Uri $apiUrl -Headers @{
-            "Accept" = "application/vnd.github.v3+json"
-            "User-Agent" = "PowerShell-ScoopSync"
-        }
+        do {
+            $apiUrl = "https://api.github.com/repos/$Repo/contents/bucket?per_page=$perPage&page=$page"
+            Write-Host "Getting file list (page $page)..."
+            
+            try {
+                $response = Invoke-RestMethod -Uri $apiUrl -Headers @{
+                    "Accept" = "application/vnd.github.v3+json"
+                    "User-Agent" = "PowerShell-ScoopSync"
+                }
+                
+                if ($response.Count -eq 0) {
+                    break
+                }
+                
+                # 过滤.json文件并添加到总列表
+                $jsonFiles = $response | Where-Object { $_.name -like "*.json" }
+                $allJsonFiles += $jsonFiles
+                
+                Write-Host "Found $($jsonFiles.Count) manifests on page $page"
+                $page++
+                
+                # 如果返回的文件数少于perPage，说明这是最后一页
+                if ($response.Count -lt $perPage) {
+                    break
+                }
+                
+                # 添加延迟避免API限制
+                Start-Sleep -Seconds 1
+                
+            } catch {
+                if ($_.Exception.Response.StatusCode -eq 404) {
+                    Write-Host "No more pages available"
+                    break
+                } else {
+                    throw
+                }
+            }
+        } while ($true)
         
-        # 过滤.json文件
-        $jsonFiles = $response | Where-Object { $_.name -like "*.json" }
-        
-        Write-Host "Found $($jsonFiles.Count) manifests"
+        Write-Host "Total manifests found: $($allJsonFiles.Count)" -ForegroundColor Cyan
         
         # 下载每个文件
         $count = 0
-        foreach ($file in $jsonFiles) {
+        foreach ($file in $allJsonFiles) {
             $count++
-            $progress = [math]::Round(($count / $jsonFiles.Count) * 100, 1)
-            Write-Progress -Activity "Downloading $Name bucket" -Status "$($file.name) ($count/$($jsonFiles.Count))" -PercentComplete $progress
+            $progress = [math]::Round(($count / $allJsonFiles.Count) * 100, 1)
+            Write-Progress -Activity "Downloading $Name bucket" -Status "$($file.name) ($count/$($allJsonFiles.Count))" -PercentComplete $progress
             
             $filePath = Join-Path $bucketDir $file.name
             try {
@@ -67,7 +99,7 @@ function Sync-Bucket {
         }
         
         Write-Progress -Activity "Downloading $Name bucket" -Completed
-        Write-Host "Successfully synced $Name bucket ($($jsonFiles.Count) files)" -ForegroundColor Green
+        Write-Host "Successfully synced $Name bucket ($($allJsonFiles.Count) files)" -ForegroundColor Green
         
     }
     catch {

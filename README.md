@@ -59,21 +59,6 @@ buckets/
 
 - main: 1000 个应用程序
 - nirsoft: 289 个应用程序
-- extras: 0 个应用程序
-- versions: 0 个应用程序
-- java: 0 个应用程序
-- games: 0 个应用程序
-- nerd-fonts: 0 个应用程序
-- php: 0 个应用程序
-- nonportable: 0 个应用程序
-- sysinternals: 0 个应用程序
-
-总计: 1289 个应用程序
-
-## 统计信息
-
-- main: 1000 个应用程序
-- nirsoft: 289 个应用程序
 - nonportable: 128 个应用程序
 
 总计: 1417 个应用程序
