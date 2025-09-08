@@ -1,0 +1,44 @@
+{
+    "description": "Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java Development Kit (OpenJDK)",
+    "homepage": "https://aws.amazon.com/corretto/",
+    "version": "8.462.08.1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://corretto.aws/downloads/resources/8.462.08.1/amazon-corretto-8.462.08.1-windows-x64-jre.zip",
+            "hash": "5564a07e1efbb4bf0cde4cf3a60fda44636ee9bfa337cc8024412d76b1df70a1"
+        },
+        "32bit": {
+            "url": "https://corretto.aws/downloads/resources/8.462.08.1/amazon-corretto-8.462.08.1-windows-x86-jre.zip",
+            "hash": "a877dab2f98d28fa97987fe835dae0130c73b5e85ca5529bd7a4d8daddc74ae1"
+        }
+    },
+    "extract_dir": "jre8",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "jsonpath": "$.windows.x64.jre.8.zip.resource",
+        "regex": "/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jre.zip",
+                "hash": {
+                    "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.windows.x64.jre.8.zip.checksum_sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x86-jre.zip",
+                "hash": {
+                    "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.windows.x86.jre.8.zip.checksum_sha256"
+                }
+            }
+        }
+    }
+}
