@@ -123,19 +123,13 @@ jobs:
           script_files=$(find scripts -type f | wc -l)
           echo "Found $script_files script files in scripts directory"
           
-          # 复制所有脚本文件到统一的scripts目录（添加仓库前缀避免冲突）
+          # 复制所有脚本文件到统一的scripts目录（保持原始路径结构）
           echo "Copying script files..."
-          for script_file in $(find scripts -type f); do
-            # 获取相对路径并添加仓库前缀
-            rel_path=${script_file#scripts/}
-            target_path="../../scripts/${{ matrix.bucket.name }}_${rel_path}"
-            mkdir -p "$(dirname "$target_path")"
-            cp "$script_file" "$target_path"
-          done
+          cp -r scripts/* ../../scripts/ 2>/dev/null || true
           
           # 验证scripts复制结果
-          copied_script_files=$(find ../../scripts -name "${{ matrix.bucket.name }}_*" | wc -l)
-          echo "Successfully copied $copied_script_files script files to scripts/ with ${{ matrix.bucket.name }}_ prefix"
+          copied_script_files=$(find ../../scripts -type f | wc -l)
+          echo "Successfully copied script files to scripts/ directory"
         else
           echo "No scripts directory found in source repository"
         fi
@@ -161,7 +155,7 @@ jobs:
           
           # 统计文件数量
           bucket_count=$(find buckets/${{ matrix.bucket.name }} -name "*.json" 2>/dev/null | wc -l)
-          script_count=$(find scripts -name "${{ matrix.bucket.name }}_*" 2>/dev/null | wc -l)
+          script_count=$(find scripts -type f 2>/dev/null | wc -l)
           total_count=$((bucket_count + script_count))
           
           git commit -m "Update ${{ matrix.bucket.name }} - $total_count files ($bucket_count bucket + $script_count scripts) ($(date '+%Y-%m-%d %H:%M:%S'))"
@@ -225,18 +219,12 @@ jobs:
         echo "" >> README_temp.md
         
         total_count=0
-        total_scripts=$(find scripts -type f | wc -l)
+        total_scripts=$(find scripts -type f 2>/dev/null | wc -l)
         for bucket in main extras versions nirsoft php nonportable java games nerd-fonts sysinternals; do
           if [ -d "buckets/$bucket" ]; then
             bucket_count=$(find buckets/$bucket -name "*.json" | wc -l)
-            script_count=$(find scripts -name "${bucket}_*" 2>/dev/null | wc -l)
-            total_bucket_count=$((bucket_count + script_count))
             if [ "$bucket_count" -gt 0 ]; then
-              if [ "$script_count" -gt 0 ]; then
-                echo "- $bucket: $bucket_count 个应用程序 + $script_count 个脚本" >> README_temp.md
-              else
-                echo "- $bucket: $bucket_count 个应用程序" >> README_temp.md
-              fi
+              echo "- $bucket: $bucket_count 个应用程序" >> README_temp.md
               total_count=$((total_count + bucket_count))
             fi
           fi
