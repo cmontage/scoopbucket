@@ -1,4 +1,4 @@
-<p align="center"><img src="https://gcore.jsdelivr.net/gh/cmontage/scoopbucket@main/scoop.png" alt="Scoop Logo" ></p>
+<p align="center"><img src="https://gcore.jsdelivr.net/gh/cmontage/scoopbucket@main/scoop.png" width="100" alt="Scoop Logo" ></p>
 
 <h1 align="center">Scoop Official Bucket  All In One</h1>
 
@@ -33,19 +33,27 @@
 $PSVersionTable.PSVersion.Major # should be >= 5.1
 ```
 
-2. 之后请根据 [官方教程](https://github.com/ScoopInstaller/Install#readme) 安装 Scoop，建议自定义安装目录，以下为我建议的安装操作 **（该安装使用我自建的 Scoop 源，自动代理无法访问的资源以及默认内置本仓库的 official bucket。详情可以看[这里](https://github.com/cmontage/scoop)）**
+2. 之后请根据 [官方教程](https://github.com/ScoopInstaller/Install#readme) 安装 Scoop，建议自定义安装目录，以下为我建议的安装操作 **（使用我自建的 Scoop 源，可与自动代理无法访问的资源以及默认内置本仓库的 official bucket。详情可以看[这里](https://github.com/cmontage/scoop)，当然你也可以使用官方  Scoop 源）**
 
 ```powershell
 # 设置 PowerShell 执行策略（非管理员启动）
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+```powershell
+# 二选一
 
-# 下载安装脚本到本地
+# 下载安装脚本到本地（自建脚本，Scoop 安装完默认内置本仓库的 official bucket 并且自动代理无法访问的资源以及移除 main bucket 限制）
 irm https://gitee.com/cmontage/scoop/raw/master/install.ps1 -outfile 'install.ps1'
 
+# 下载安装脚本到本地（官方脚本）
+irm get.scoop.sh -outfile 'install.ps1'
+```
+```powershell
 # 自定义 Scoop 安装目录，以下是我的路径例子，你可以自己根据情况修改
 # 可以不设全局文件夹ScoopGlobalDir，全局文件夹里的应用需要管理员权限
 .\install.ps1 -ScoopDir 'D:\Apps\Scoop\ScoopApps' -ScoopGlobalDir 'D:\Apps\Scoop\ScoopApps-G' -NoProxy
-
+```
+```powershell
 # 下载 7zip git，因为我们之后如果要添加别的 Bucket，必须有 git、7zip
 scoop install 7zip git
 ```
