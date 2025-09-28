@@ -1,4 +1,4 @@
-<p align="center"><img src="https://gcore.jsdelivr.net/gh/cmontage/scoopbucket@main/bin/scoop.png" alt="Scoop Logo" ></p>
+<p align="center"><img src="https://gcore.jsdelivr.net/gh/cmontage/scoopbucket@main/scoop.png" alt="Scoop Logo" ></p>
 
 <h1 align="center">Scoop Official Bucket  All In One</h1>
 
