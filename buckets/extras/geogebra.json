@@ -14,7 +14,7 @@
     "hash": "9533610cff7af09e71cdd73e574d6206e5607339a2fb5d0dc9893056ce027198",
     "post_install": [
         "$geogebra_path = $dir -replace '\\\\', '\\\\'",
-        "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
+        "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\extras\\$app\" -Filter '*.reg' -File | ForEach-Object {",
         "    $content = Get-Content -Path $_.FullName -Encoding ascii",
         "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE' }",
         "    $content -replace '{{geogebra_dir}}', $geogebra_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
