@@ -16,7 +16,58 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
+  # 清理旧的扁平 scripts 结构，迁移到按源 bucket 分目录存放
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+
+    - name: Setup Git
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+
+    - name: Clean legacy flat scripts structure
+      run: |
+        # 已知的 bucket 名称列表
+        BUCKET_NAMES=("main" "extras" "versions" "nirsoft" "php" "nonportable" "java" "games" "nerd-fonts" "sysinternals")
+
+        if [ -d "scripts" ]; then
+          for item in scripts/*; do
+            # 防止空目录 glob 失败
+            [ -e "$item" ] || continue
+            base=$(basename "$item")
+            is_bucket=false
+            for bn in "${BUCKET_NAMES[@]}"; do
+              if [ "$base" = "$bn" ]; then
+                is_bucket=true
+                break
+              fi
+            done
+            if [ "$is_bucket" = false ]; then
+              echo "Removing legacy scripts item: $item"
+              rm -rf "$item"
+            fi
+          done
+        fi
+
+    - name: Commit cleanup if needed
+      run: |
+        git add -A scripts/
+        if ! git diff --cached --quiet; then
+          git commit -m "Restructure scripts: organize by source bucket name"
+          git push origin main
+          echo "Committed legacy scripts cleanup"
+        else
+          echo "No legacy scripts to clean up"
+        fi
+
   sync-buckets:
+    needs: prepare
     runs-on: ubuntu-latest
     
     strategy:
@@ -52,6 +103,10 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         fetch-depth: 0
+
+    - name: Pull latest changes
+      if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
+      run: git pull origin main
 
     - name: Setup Git
       if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
@@ -97,7 +152,7 @@ jobs:
         
         # 创建目标目录（强制创建，即使已存在）
         mkdir -p ../../buckets/${{ matrix.bucket.name }}
-        mkdir -p ../../scripts
+        mkdir -p ../../scripts/${{ matrix.bucket.name }}
         
         # 处理bucket目录
         if [ -d "bucket" ]; then
@@ -118,18 +173,19 @@ jobs:
           echo "No bucket directory found in source repository"
         fi
         
-        # 处理scripts目录
+        # 处理scripts目录 - 按源 bucket 名称分目录存放
         if [ -d "scripts" ]; then
           script_files=$(find scripts -type f | wc -l)
           echo "Found $script_files script files in scripts directory"
           
-          # 复制所有脚本文件到统一的scripts目录（保持原始路径结构）
-          echo "Copying script files..."
-          cp -r scripts/* ../../scripts/ 2>/dev/null || true
+          # 清理该 bucket 的旧脚本并重新复制
+          rm -rf ../../scripts/${{ matrix.bucket.name }}/* 2>/dev/null || true
+          echo "Copying script files to scripts/${{ matrix.bucket.name }}/..."
+          cp -r scripts/* ../../scripts/${{ matrix.bucket.name }}/ 2>/dev/null || true
           
           # 验证scripts复制结果
-          copied_script_files=$(find ../../scripts -type f | wc -l)
-          echo "Successfully copied script files to scripts/ directory"
+          copied_script_files=$(find ../../scripts/${{ matrix.bucket.name }} -type f | wc -l)
+          echo "Successfully copied $copied_script_files script files to scripts/${{ matrix.bucket.name }}/"
         else
           echo "No scripts directory found in source repository"
         fi
@@ -145,7 +201,7 @@ jobs:
       if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
       run: |
         # 先添加所有变化到Git
-        git add buckets/${{ matrix.bucket.name }}/ scripts/
+        git add buckets/${{ matrix.bucket.name }}/ scripts/${{ matrix.bucket.name }}/
         
         # 检查是否有staged变化
         if git diff --cached --quiet; then
@@ -155,7 +211,7 @@ jobs:
           
           # 统计文件数量
           bucket_count=$(find buckets/${{ matrix.bucket.name }} -name "*.json" 2>/dev/null | wc -l)
-          script_count=$(find scripts -type f 2>/dev/null | wc -l)
+          script_count=$(find scripts/${{ matrix.bucket.name }} -type f 2>/dev/null | wc -l)
           total_count=$((bucket_count + script_count))
           
           git commit -m "Update ${{ matrix.bucket.name }} - $total_count files ($bucket_count bucket + $script_count scripts) ($(date '+%Y-%m-%d %H:%M:%S'))"
@@ -219,59 +275,20 @@ jobs:
         echo "" >> README_temp.md
         
         total_count=0
-        total_scripts=$(find scripts -type f 2>/dev/null | wc -l)
+        total_scripts=0
         
         # 统计每个bucket的应用程序和脚本数量
         for bucket in main extras versions nirsoft php nonportable java games nerd-fonts sysinternals; do
           if [ -d "buckets/$bucket" ]; then
             bucket_count=$(find buckets/$bucket -name "*.json" | wc -l)
             if [ "$bucket_count" -gt 0 ]; then
-              # 根据bucket统计对应的脚本数量
-              case "$bucket" in
-                "main")
-                  repo_name="ScoopInstaller/Main"
-                  ;;
-                "extras")
-                  repo_name="ScoopInstaller/Extras"
-                  ;;
-                "versions")
-                  repo_name="ScoopInstaller/Versions"
-                  ;;
-                "nirsoft")
-                  repo_name="ScoopInstaller/Nirsoft"
-                  ;;
-                "php")
-                  repo_name="ScoopInstaller/PHP"
-                  ;;
-                "nonportable")
-                  repo_name="ScoopInstaller/Nonportable"
-                  ;;
-                "java")
-                  repo_name="ScoopInstaller/Java"
-                  ;;
-                "games")
-                  repo_name="Calinou/scoop-games"
-                  ;;
-                "nerd-fonts")
-                  repo_name="matthewjberger/scoop-nerd-fonts"
-                  ;;
-                "sysinternals")
-                  repo_name="niheaven/scoop-sysinternals"
-                  ;;
-              esac
-              
-              # 临时克隆源仓库检查脚本数量
-              temp_dir="temp_count_$bucket"
+              # 直接从本地 scripts/<bucket> 目录统计脚本数量（无需临时克隆）
               script_count=0
-              if git clone --depth 1 --filter=blob:none --sparse https://github.com/$repo_name.git $temp_dir 2>/dev/null; then
-                cd $temp_dir
-                git sparse-checkout set scripts
-                if [ -d "scripts" ]; then
-                  script_count=$(find scripts -type f | wc -l)
-                fi
-                cd ..
-                rm -rf $temp_dir
+              if [ -d "scripts/$bucket" ]; then
+                script_count=$(find scripts/$bucket -type f | wc -l)
               fi
+              
+              total_scripts=$((total_scripts + script_count))
               
               if [ "$script_count" -gt 0 ]; then
                 echo "- $bucket: $bucket_count 个应用程序 + $script_count 个脚本" >> README_temp.md
