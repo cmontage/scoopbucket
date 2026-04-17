@@ -234,6 +234,88 @@ jobs:
         PYEOF
         python3 /tmp/fix_paths.py "${{ matrix.bucket.name }}"
 
+    - name: Fix dependency bucket names in manifests
+      if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
+      env:
+        BUCKET_NAME: ${{ matrix.bucket.name }}
+      run: |
+        cat > /tmp/fix_depends.py << 'PYEOF'
+        import json, glob, os, sys, re
+
+        bucket_name = sys.argv[1]
+        known_buckets = ['main', 'extras', 'versions', 'nirsoft', 'php',
+                         'nonportable', 'java', 'games', 'nerd-fonts', 'sysinternals']
+        # 构建匹配模式：bucketname/appname
+        bucket_pattern = re.compile(
+            r'^(' + '|'.join(re.escape(b) for b in known_buckets) + r')/(.+)$'
+        )
+
+        def replace_bucket_ref(value):
+            """将 bucketname/appname 替换为 official/appname"""
+            if not isinstance(value, str):
+                return value, False
+            m = bucket_pattern.match(value)
+            if m:
+                return f'official/{m.group(2)}', True
+            return value, False
+
+        fixed_count = 0
+        for json_file in glob.glob(f'buckets/{bucket_name}/*.json'):
+            try:
+                with open(json_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+            except (json.JSONDecodeError, UnicodeDecodeError):
+                continue
+
+            changed = False
+
+            # 处理 depends 字段（字符串或数组）
+            if 'depends' in data:
+                dep = data['depends']
+                if isinstance(dep, str):
+                    new_val, did_change = replace_bucket_ref(dep)
+                    if did_change:
+                        data['depends'] = new_val
+                        changed = True
+                elif isinstance(dep, list):
+                    new_list = []
+                    for item in dep:
+                        new_val, did_change = replace_bucket_ref(item)
+                        if did_change:
+                            changed = True
+                        new_list.append(new_val)
+                    if changed:
+                        data['depends'] = new_list
+
+            # 处理 suggest 字段（对象，值可以是字符串或数组）
+            if 'suggest' in data and isinstance(data['suggest'], dict):
+                for key, val in data['suggest'].items():
+                    if isinstance(val, str):
+                        new_val, did_change = replace_bucket_ref(val)
+                        if did_change:
+                            data['suggest'][key] = new_val
+                            changed = True
+                    elif isinstance(val, list):
+                        new_list = []
+                        for item in val:
+                            new_val, did_change = replace_bucket_ref(item)
+                            if did_change:
+                                changed = True
+                            new_list.append(new_val)
+                        if changed:
+                            data['suggest'][key] = new_list
+
+            if changed:
+                with open(json_file, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, indent=4, ensure_ascii=False)
+                    f.write('\n')
+                fixed_count += 1
+                print(f'  Fixed deps: {os.path.basename(json_file)}')
+
+        print(f'Fixed dependency bucket names in {fixed_count} manifests for {bucket_name}')
+        PYEOF
+        python3 /tmp/fix_depends.py "${{ matrix.bucket.name }}"
+
     - name: Commit changes for this bucket
       if: github.event.inputs.bucket == '' || github.event.inputs.bucket == matrix.bucket.name
       run: |
