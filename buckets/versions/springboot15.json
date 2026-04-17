@@ -9,8 +9,8 @@
     "bin": "bin\\spring.bat",
     "suggest": {
         "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
+            "official/oraclejdk",
+            "official/openjdk"
         ]
     }
 }

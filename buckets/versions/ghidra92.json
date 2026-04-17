@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "notes": "Ghidra requires JDK on the PATH to run.",
     "suggest": {
-        "JDK": "java/openjdk"
+        "JDK": "official/openjdk"
     },
     "architecture": {
         "64bit": {
