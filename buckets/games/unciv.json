@@ -4,7 +4,7 @@
     "description": "Open source, mod-friendly Android + Desktop remake of Civ V, made with LibGDX",
     "license": "MPL-2.0",
     "suggest": {
-        "Java Runtime Environment": "java/temurin-jre"
+        "Java Runtime Environment": "official/temurin-jre"
     },
     "url": "https://github.com/yairm210/Unciv/releases/download/4.20.1/Unciv-Windows64.zip",
     "hash": "d4d39aef3ec0dd25d75acb65c40c127b3edefbe9f8e290a21bc42833904f109a",

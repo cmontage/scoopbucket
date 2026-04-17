@@ -6,7 +6,7 @@
     "url": "https://github.com/GoldenGnu/jeveassets/releases/download/jeveassets-8.1.2/jeveassets-8.1.2.zip",
     "hash": "f059d5b9e75ec3531b293560a3bd583d6285efa518757a90ec4e2462833a631b",
     "suggest": {
-        "JRE": "java/temurin-jre"
+        "JRE": "official/temurin-jre"
     },
     "extract_dir": "jEveAssets",
     "persist": "data",

@@ -20,8 +20,8 @@
     ],
     "suggest": {
         "Launcher (frontend)": [
-            "games/doomrunner",
-            "games/zdl"
+            "official/doomrunner",
+            "official/zdl"
         ]
     },
     "architecture": {

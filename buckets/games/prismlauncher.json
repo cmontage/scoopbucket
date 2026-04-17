@@ -12,7 +12,7 @@
         "If you are using a global install on a system with more than one user, you will need to copy a user's data from %appdata% to the new Scoop PrismLauncher persist directory"
     ],
     "suggest": {
-        "Microsoft Visual C++ Redistributables": "extras/vcredist2022"
+        "Microsoft Visual C++ Redistributables": "official/vcredist2022"
     },
     "architecture": {
         "64bit": {

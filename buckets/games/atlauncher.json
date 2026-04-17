@@ -5,7 +5,7 @@
     "license": "GPL-3.0-only",
     "notes": "This application requires JRE 1.8 or higher to run.",
     "suggest": {
-        "JRE": "java/temurin17-jre"
+        "JRE": "official/temurin17-jre"
     },
     "url": "https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.40.4/ATLauncher-3.4.40.4.exe#/ATLauncher.exe",
     "hash": "eaf8923b0dd40cbabfe169a460115aff9ae0b90e7c1df39264ecd2ecc7707564",

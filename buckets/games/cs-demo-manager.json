@@ -39,7 +39,7 @@
         ]
     ],
     "suggest": {
-        "The database": "main/postgresql"
+        "The database": "official/postgresql"
     },
     "notes": [
         "https://cs-demo-manager.com/docs/installation",
