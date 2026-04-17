@@ -7,7 +7,7 @@
         "url": "https://github.com/ankitects/anki/blob/HEAD/LICENSE"
     },
     "suggest": {
-        "vcredist": "extras/vcredist2008"
+        "vcredist": "official/vcredist2008"
     },
     "architecture": {
         "64bit": {
