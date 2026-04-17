@@ -11,7 +11,7 @@
         "Also note that this installation overrides GEM_HOME and GEM_PATH from any previous Ruby or JRuby installation."
     ],
     "suggest": {
-        "JDK": "java/openjdk"
+        "JDK": "official/openjdk"
     },
     "url": "https://repo1.maven.org/maven2/org/jruby/jruby-dist/10.0.5.0/jruby-dist-10.0.5.0-bin.zip",
     "hash": "f18d3550d02981e955f336242ce542c0514c2b3f99691b4a1abbb897142ce2cf",

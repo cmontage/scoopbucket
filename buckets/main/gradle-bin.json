@@ -4,7 +4,7 @@
     "homepage": "https://gradle.org",
     "license": "Apache-2.0",
     "suggest": {
-        "JDK": "java/openjdk"
+        "JDK": "official/openjdk"
     },
     "url": "https://services.gradle.org/distributions/gradle-9.4.1-bin.zip",
     "hash": "2ab2958f2a1e51120c326cad6f385153bb11ee93b3c216c5fccebfdfbb7ec6cb",

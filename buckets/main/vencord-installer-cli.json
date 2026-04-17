@@ -4,7 +4,7 @@
     "homepage": "https://github.com/Vencord/Installer",
     "license": "GPL-3.0-only",
     "suggest": {
-        "discord": "extras/discord"
+        "discord": "official/discord"
     },
     "architecture": {
         "64bit": {

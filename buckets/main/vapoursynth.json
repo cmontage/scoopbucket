@@ -9,7 +9,7 @@
         "For more details, see: https://github.com/vapoursynth/vapoursynth/issues/1177"
     ],
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "official/vcredist2022"
     },
     "architecture": {
         "64bit": {

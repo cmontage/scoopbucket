@@ -5,16 +5,16 @@
     "license": "Apache-2.0",
     "suggest": {
         "JDK8": [
-            "java/adopt8-hotspot",
-            "java/adopt8-openj9",
-            "java/corretto8",
-            "java/liberica8",
-            "java/ojdkbuild8",
-            "java/zulu8",
-            "java/zulufx8"
+            "official/adopt8-hotspot",
+            "official/adopt8-openj9",
+            "official/corretto8",
+            "official/liberica8",
+            "official/ojdkbuild8",
+            "official/zulu8",
+            "official/zulufx8"
         ]
     },
-    "depends": "versions/python27",
+    "depends": "official/python27",
     "url": "https://packages.chocolatey.org/buck.2021.01.12.01.nupkg",
     "hash": "6623ab85184b7f0e0afad2e504423f33c803ada6ce1606886e78ae0565777dd4",
     "extract_dir": "tools",

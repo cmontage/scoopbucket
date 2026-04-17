@@ -4,7 +4,7 @@
     "homepage": "https://maestro.dev",
     "license": "Apache-2.0",
     "suggest": {
-        "Java": "java/openjdk"
+        "Java": "official/openjdk"
     },
     "url": "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.4.0/maestro.zip",
     "hash": "aea22ce67ab6718997ec990c58652ede0c2be8f10ac4799039ca3dce3390d634",

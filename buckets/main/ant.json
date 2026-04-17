@@ -4,7 +4,7 @@
     "homepage": "https://ant.apache.org/",
     "license": "Apache-2.0",
     "suggest": {
-        "JDK": "java/openjdk"
+        "JDK": "official/openjdk"
     },
     "url": "https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.17-bin.zip",
     "hash": "sha512:5205a3c87902dd356a6bfcfc5d07659361d1c74627716662d7b31ab47817388dd1d985cfc27ca81a607827cb58d9e36d2d2fbf87a961a5dd4eeabfbde380aa71",

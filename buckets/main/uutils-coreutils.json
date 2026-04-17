@@ -7,7 +7,7 @@
         "url": "https://github.com/uutils/coreutils/blob/HEAD/LICENSE"
     },
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "official/vcredist2022"
     },
     "architecture": {
         "64bit": {

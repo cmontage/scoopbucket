@@ -5,9 +5,9 @@
     "license": "MIT",
     "suggest": {
         "FFmpeg": [
-            "main/ffmpeg",
-            "main/ffmpeg-essentials",
-            "main/ffmpeg-shared"
+            "official/ffmpeg",
+            "official/ffmpeg-essentials",
+            "official/ffmpeg-shared"
         ]
     },
     "architecture": {

@@ -7,7 +7,7 @@
     "notes": "Version 2.8.3 was moved to 'version/lynx283'",
     "depends": "cacert",
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "official/vcredist2022"
     },
     "innosetup": true,
     "url": "https://invisible-island.net/archives/lynx/current/lynx-newssl2.9.2-setup.exe",

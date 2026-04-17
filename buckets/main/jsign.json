@@ -5,8 +5,8 @@
     "license": "Apache-2.0",
     "suggest": {
         "JDK": [
-            "java/openjdk",
-            "java/oraclejdk"
+            "official/openjdk",
+            "official/oraclejdk"
         ]
     },
     "url": [

@@ -8,8 +8,8 @@
     "bin": "procyon.jar",
     "suggest": {
         "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
+            "official/oraclejdk",
+            "official/openjdk"
         ]
     }
 }

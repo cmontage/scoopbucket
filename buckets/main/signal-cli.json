@@ -4,7 +4,7 @@
     "homepage": "https://github.com/AsamK/signal-cli",
     "license": "GPL-3.0-only",
     "suggest": {
-        "JDK": "java/openjdk"
+        "JDK": "official/openjdk"
     },
     "url": "https://github.com/AsamK/signal-cli/releases/download/v0.14.2/signal-cli-0.14.2.tar.gz",
     "hash": "ae2bbc6fc6689a8ab23d57e637d7e9cdbb4342937bdb1b54d4cf6b5640df1e0d",
