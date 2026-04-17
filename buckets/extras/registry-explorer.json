@@ -4,7 +4,7 @@
     "homepage": "https://ericzimmerman.github.io",
     "license": "MIT",
     "suggest": {
-        ".NET Desktop Runtime 9.0": "versions/windowsdesktop-runtime-9.0"
+        ".NET Desktop Runtime 9.0": "official/windowsdesktop-runtime-9.0"
     },
     "architecture": {
         "64bit": {

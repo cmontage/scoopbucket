@@ -8,7 +8,7 @@
         "https://josm.openstreetmap.de/browser/trunk/README"
     ],
     "suggest": {
-        "JRE": "java/temurin-jre"
+        "JRE": "official/temurin-jre"
     },
     "url": [
         "https://josm.openstreetmap.de/download/josm-snapshot-19555.jar#/josm.jar",

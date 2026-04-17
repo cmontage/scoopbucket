@@ -14,7 +14,7 @@
         "This manifest is deprecated and scheduled for removal on 2026-06-01. Please use `extras/pycharm` instead."
     ],
     "suggest": {
-        "PyCharm": "extras/pycharm"
+        "PyCharm": "official/pycharm"
     },
     "architecture": {
         "64bit": {

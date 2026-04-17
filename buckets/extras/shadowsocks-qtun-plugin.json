@@ -4,7 +4,7 @@
     "homepage": "https://github.com/shadowsocks/qtun",
     "license": "MIT",
     "suggest": {
-        "Shadowsocks": "extras/shadowsocks"
+        "Shadowsocks": "official/shadowsocks"
     },
     "architecture": {
         "64bit": {

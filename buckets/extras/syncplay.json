@@ -4,7 +4,7 @@
     "homepage": "https://syncplay.pl/",
     "license": "Apache-2.0",
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "official/vcredist2022"
     },
     "url": "https://github.com/Syncplay/syncplay/releases/download/v1.7.5/Syncplay_1.7.5_Portable.zip",
     "hash": "160a17af6f3b50dde84d633d3b273281c32cbb712e48b7e534f245cc9ab63dc5",

@@ -4,7 +4,7 @@
     "homepage": "https://zarestia-dev.github.io/rclone-manager/",
     "license": "GPL-3.0-or-later",
     "suggest": {
-        "Microsoft Edge WebView2": "extras/webview2"
+        "Microsoft Edge WebView2": "official/webview2"
     },
     "architecture": {
         "64bit": {

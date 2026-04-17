@@ -5,8 +5,8 @@
     "license": "MIT",
     "notes": "To use this plugin, add 'eval \"$(zsh-patina activate)\"' in your .zshrc. Zsh may be installed through msys2 or cygwin.",
     "suggest": {
-        "msys2": "main/msys2",
-        "cygwin": "main/cygwin"
+        "msys2": "official/msys2",
+        "cygwin": "official/cygwin"
     },
     "architecture": {
         "64bit": {

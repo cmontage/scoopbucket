@@ -5,14 +5,14 @@
     "license": "GPL-3.0-or-later",
     "depends": [
         "fzf",
-        "extras/mpv"
+        "official/mpv"
     ],
     "suggest": {
         "local downloads": [
             "aria2",
             "yt-dlp"
         ],
-        "alternate player": "extras/vlc"
+        "alternate player": "official/vlc"
     },
     "url": "https://github.com/pystardust/ani-cli/releases/download/v4.11/ani-cli",
     "hash": "1f35c47b0c6d924261d096663d16b03d489f488fcc38c74e4fe87b45a330b7cf",

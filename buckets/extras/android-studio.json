@@ -7,7 +7,7 @@
         "url": "https://developer.android.com/studio/terms"
     },
     "suggest": {
-        "Android SDK": "main/android-clt"
+        "Android SDK": "official/android-clt"
     },
     "architecture": {
         "64bit": {

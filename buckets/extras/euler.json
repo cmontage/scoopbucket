@@ -5,10 +5,10 @@
     "license": "GPL-3.0-or-later",
     "suggest": {
         "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
+            "official/oraclejdk",
+            "official/openjdk"
         ],
-        "POV-Ray": "extras/pov-ray"
+        "POV-Ray": "official/pov-ray"
     },
     "architecture": {
         "64bit": {

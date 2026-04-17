@@ -5,8 +5,8 @@
     "license": "GPL-2.0-or-later",
     "suggest": {
         "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
+            "official/oraclejdk",
+            "official/openjdk"
         ]
     },
     "architecture": {

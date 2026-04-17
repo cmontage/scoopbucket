@@ -8,9 +8,9 @@
     },
     "suggest": {
         "java": [
-            "java/oraclejdk",
-            "java/adopt11-hotspot",
-            "java/adopt14-hotspot"
+            "official/oraclejdk",
+            "official/adopt11-hotspot",
+            "official/adopt14-hotspot"
         ]
     },
     "url": "https://www.sql-workbench.eu/Workbench-Build132-with-optional-libs.zip",

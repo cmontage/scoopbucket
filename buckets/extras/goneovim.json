@@ -7,7 +7,7 @@
         "url": "https://github.com/akiyosi/goneovim/blob/HEAD/LICENSE"
     },
     "suggest": {
-        "Neovim": "main/neovim"
+        "Neovim": "official/neovim"
     },
     "architecture": {
         "64bit": {

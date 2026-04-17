@@ -8,8 +8,8 @@
     },
     "depends": "putty",
     "suggest": {
-        "Copy files": "extras/winscp",
-        "X-server": "extras/vcxsrv"
+        "Copy files": "official/winscp",
+        "X-server": "official/vcxsrv"
     },
     "architecture": {
         "64bit": {

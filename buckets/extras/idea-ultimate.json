@@ -14,7 +14,7 @@
         "This manifest is deprecated and scheduled for removal on 2026-06-01. Please use `extras/idea` instead."
     ],
     "suggest": {
-        "IDEA": "extras/idea"
+        "IDEA": "official/idea"
     },
     "architecture": {
         "64bit": {

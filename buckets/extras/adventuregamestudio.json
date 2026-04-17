@@ -7,7 +7,7 @@
         "url": "https://github.com/adventuregamestudio/ags/blob/master/License.txt"
     },
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "official/vcredist2022"
     },
     "url": "https://github.com/adventuregamestudio/ags/releases/download/v3.6.2.18/AGS-3.6.2.18-P8.exe",
     "hash": "5fa6c656ade4b1a26a2a1a204fb007773bc1234e91578db223fe3b7334e952c7",

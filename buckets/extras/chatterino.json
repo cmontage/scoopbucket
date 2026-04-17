@@ -5,8 +5,8 @@
     "license": "MIT",
     "suggest": {
         "vcredist": [
-            "extras/vcredist2013",
-            "extras/vcredist2022"
+            "official/vcredist2013",
+            "official/vcredist2022"
         ]
     },
     "architecture": {

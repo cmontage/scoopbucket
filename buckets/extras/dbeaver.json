@@ -5,9 +5,9 @@
     "license": "Apache-2.0",
     "suggest": {
         "java": [
-            "java/oraclejdk",
-            "java/oraclejre8",
-            "java/openjdk11"
+            "official/oraclejdk",
+            "official/oraclejre8",
+            "official/openjdk11"
         ]
     },
     "architecture": {

@@ -4,7 +4,7 @@
     "homepage": "https://www.netradio.info/app/",
     "license": "Freeware",
     "suggest": {
-        ".NET Desktop Runtime 8.0": "versions/windowsdesktop-runtime-8.0"
+        ".NET Desktop Runtime 8.0": "official/windowsdesktop-runtime-8.0"
     },
     "architecture": {
         "64bit": {

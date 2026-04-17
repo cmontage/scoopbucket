@@ -5,8 +5,8 @@
     "license": "MIT",
     "suggest": {
         "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
+            "official/oraclejdk",
+            "official/openjdk"
         ]
     },
     "notes": "Default URL is http://localhost:25600",

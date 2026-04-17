@@ -6,12 +6,12 @@
     "notes": " - Run 'flutter doctor' to see if there are any platform dependencies you need to complete the setup.",
     "suggest": {
         "Android SDK Tools": "android-clt",
-        "Android Studio": "extras/android-studio",
+        "Android Studio": "official/android-studio",
         "Java": [
-            "java/oraclejdk-lts",
-            "java/openjdk11"
+            "official/oraclejdk-lts",
+            "official/openjdk11"
         ],
-        "Visual Studio Code with Flutter extension": "extras/vscode"
+        "Visual Studio Code with Flutter extension": "official/vscode"
     },
     "url": "https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.41.7-stable.zip",
     "hash": "de17b513b740a931c5dbc3f96b5a659c1612dfe6b5e1f910c5ad954a8bac17ee",

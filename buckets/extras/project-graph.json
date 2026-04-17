@@ -7,7 +7,7 @@
         "url": "https://graphif.dev/docs/app/misc/terms"
     },
     "suggest": {
-        "Microsoft Edge WebView2": "extras/webview2"
+        "Microsoft Edge WebView2": "official/webview2"
     },
     "architecture": {
         "64bit": {

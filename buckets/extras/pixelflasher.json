@@ -16,7 +16,7 @@
         ]
     ],
     "suggest": {
-        "adb": "main/adb"
+        "adb": "official/adb"
     },
     "checkver": "github",
     "autoupdate": {

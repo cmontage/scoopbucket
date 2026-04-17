@@ -4,8 +4,8 @@
     "homepage": "https://github.com/mpvnet-player/mpv.net",
     "license": "GPL-2.0-or-later",
     "suggest": {
-        ".NET Desktop Runtime 10.0": "versions/windowsdesktop-runtime-10.0",
-        "Media streaming support": "main/yt-dlp"
+        ".NET Desktop Runtime 10.0": "official/windowsdesktop-runtime-10.0",
+        "Media streaming support": "official/yt-dlp"
     },
     "architecture": {
         "64bit": {

@@ -10,7 +10,7 @@
         }
     },
     "suggest": {
-        "86Box ROMs": "extras/86box-roms"
+        "86Box ROMs": "official/86box-roms"
     },
     "bin": "86Box.exe",
     "shortcuts": [

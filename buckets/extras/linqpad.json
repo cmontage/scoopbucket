@@ -7,9 +7,9 @@
         "url": "https://www.linqpad.net/eula.txt"
     },
     "suggest": {
-        ".NET SDK 8": "versions/dotnet8-sdk",
-        ".NET SDK 9": "versions/dotnet9-sdk",
-        ".NET SDK 10": "versions/dotnet10-sdk"
+        ".NET SDK 8": "official/dotnet8-sdk",
+        ".NET SDK 9": "official/dotnet9-sdk",
+        ".NET SDK 10": "official/dotnet10-sdk"
     },
     "url": "https://cdn.linqpad.net/public/LINQPad9.zip?cache=9.7.13.2777418",
     "hash": "783998de4bd7d515a19ce40a9b318fe7f076fc5211a9ec1775be0ea44103bc9a",

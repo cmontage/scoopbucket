@@ -4,7 +4,7 @@
     "description": "A beautiful, super fast disk usage analysis tool. Built with rust.",
     "license": "AGPL-3.0",
     "suggest": {
-        "Microsoft Edge WebView2": "extras/webview2"
+        "Microsoft Edge WebView2": "official/webview2"
     },
     "architecture": {
         "64bit": {

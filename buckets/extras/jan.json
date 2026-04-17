@@ -4,8 +4,8 @@
     "homepage": "https://jan.ai",
     "license": "AGPL-3.0-only",
     "suggest": {
-        "vcredist": "extras/vcredist2022",
-        "Microsoft Edge WebView2": "extras/webview2"
+        "vcredist": "official/vcredist2022",
+        "Microsoft Edge WebView2": "official/webview2"
     },
     "architecture": {
         "64bit": {

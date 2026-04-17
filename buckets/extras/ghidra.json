@@ -6,7 +6,7 @@
     "notes": "Ghidra requires JDK 21 on the PATH to run.",
     "extract_dir": "ghidra_12.0.4_PUBLIC",
     "suggest": {
-        "JDK": "java/temurin21-jdk"
+        "JDK": "official/temurin21-jdk"
     },
     "architecture": {
         "64bit": {

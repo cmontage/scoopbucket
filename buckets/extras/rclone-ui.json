@@ -4,7 +4,7 @@
     "homepage": "https://rcloneui.com",
     "license": "Apache-2.0",
     "suggest": {
-        "Microsoft Edge WebView2": "extras/webview2"
+        "Microsoft Edge WebView2": "official/webview2"
     },
     "architecture": {
         "64bit": {

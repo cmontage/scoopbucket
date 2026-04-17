@@ -4,7 +4,7 @@
     "homepage": "https://devolutions.net/unigetui/",
     "license": "MIT",
     "suggest": {
-        "scoop-search": "main/scoop-search"
+        "scoop-search": "official/scoop-search"
     },
     "architecture": {
         "64bit": {

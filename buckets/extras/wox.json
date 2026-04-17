@@ -7,8 +7,8 @@
         "url": "https://github.com/Wox-launcher/Wox/blob/master/LICENSE"
     },
     "suggest": {
-        "Python3": "main/python",
-        "Everything": "extras/everything"
+        "Python3": "official/python",
+        "Everything": "official/everything"
     },
     "architecture": {
         "64bit": {

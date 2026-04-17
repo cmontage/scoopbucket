@@ -5,8 +5,8 @@
     "license": "GPL-3.0-only",
     "suggest": {
         "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
+            "official/oraclejdk",
+            "official/openjdk"
         ]
     },
     "url": [

@@ -7,10 +7,10 @@
     "suggest": {
         ".NET SDK": [
             "dotnet-sdk",
-            "versions/dotnet-sdk-lts",
-            "versions/dotnet8-sdk",
-            "versions/dotnet9-sdk",
-            "versions/dotnet10-sdk"
+            "official/dotnet-sdk-lts",
+            "official/dotnet8-sdk",
+            "official/dotnet9-sdk",
+            "official/dotnet10-sdk"
         ]
     },
     "architecture": {

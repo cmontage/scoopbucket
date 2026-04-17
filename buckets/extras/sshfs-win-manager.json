@@ -4,7 +4,7 @@
     "homepage": "https://github.com/evsar3/sshfs-win-manager",
     "license": "MIT",
     "suggest": {
-        "SSHFS": "nonportable/sshfs-np"
+        "SSHFS": "official/sshfs-np"
     },
     "architecture": {
         "64bit": {

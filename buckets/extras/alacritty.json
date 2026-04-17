@@ -8,7 +8,7 @@
         "reg import \"$dir\\install-context.reg\""
     ],
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "official/vcredist2022"
     },
     "url": "https://github.com/alacritty/alacritty/releases/download/v0.17.0/Alacritty-v0.17.0-portable.exe#/alacritty.exe",
     "hash": "5ad70ddc5c2a2bfe84084a2c4c73558e9360914f035a902d7a69277be7249f1f",

@@ -8,8 +8,8 @@
         "Required Components: 'MSbuild', 'VC++ 2017 v141 toolset' and one of the Windows SDKs (10 or 8.1)."
     ],
     "depends": [
-        "versions/python27",
-        "extras/squashfs-tools"
+        "official/python27",
+        "official/squashfs-tools"
     ],
     "architecture": {
         "64bit": {

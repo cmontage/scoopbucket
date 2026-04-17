@@ -5,8 +5,8 @@
     "license": "EPL-1.0",
     "suggest": {
         "javajdk": [
-            "java/openjdk11",
-            "java/zulu11"
+            "official/openjdk11",
+            "official/zulu11"
         ]
     },
     "url": "https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/5.1.4/openhab-5.1.4.zip",

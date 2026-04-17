@@ -5,7 +5,7 @@
     "license": "AGPL-3.0-only",
     "notes": "Settings are stored in the ~\\AppData\\Local\\in.cinny.app directory.",
     "suggest": {
-        "Microsoft Edge WebView2": "extras/webview2"
+        "Microsoft Edge WebView2": "official/webview2"
     },
     "architecture": {
         "64bit": {

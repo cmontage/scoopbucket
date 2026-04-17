@@ -4,7 +4,7 @@
     "homepage": "https://ermig1979.github.io/AntiDupl/english/",
     "license": "MIT",
     "suggest": {
-        ".NET Desktop Runtime 6.0": "versions/windowsdesktop-runtime-6.0"
+        ".NET Desktop Runtime 6.0": "official/windowsdesktop-runtime-6.0"
     },
     "url": "https://github.com/ermig1979/AntiDupl/releases/download/v2.3.13/AntiDupl.NET-2.3.13.exe#/dl.7z",
     "hash": "9051b4c60ccb36eb96a6d938844ff40e0db65912cde6e6b9251c801ce32f3eb4",

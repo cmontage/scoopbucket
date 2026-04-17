@@ -14,7 +14,7 @@
         "yt-dlp"
     ],
     "suggest": {
-        "Fred TV": "extras/fred-tv"
+        "Fred TV": "official/fred-tv"
     },
     "architecture": {
         "64bit": {
