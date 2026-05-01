@@ -6,7 +6,7 @@
     "suggest": {
         "Java": [
             "official/oraclejdk",
-            "official/temurin8-jre"
+            "official/temurin17-jre"
         ]
     },
     "url": "https://languagetool.org/download/LanguageTool-6.6.zip",
