@@ -1,25 +1,28 @@
 {
-    "version": "1.4.0-canary.1+832edbc70",
-    "description": "Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.",
-    "homepage": "https://bun.sh/",
-    "license": "MIT",
+    "version": "1.3.14",
+    "description": "Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one. (last release built from the original zig codebase)",
+    "homepage": "https://bun.com/blog/bun-v1.3.14",
+    "license": {
+        "identifier": "MIT,...",
+        "url": "https://github.com/oven-sh/bun/blob/bun-v1.3.14/LICENSE.md"
+    },
     "suggest": {
         "vcredist": "official/vcredist2022"
     },
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/oven-sh/bun/releases/download/canary/bun-windows-x64.zip",
-                "https://github.com/oven-sh/bun/releases/download/canary/bun-windows-x64-baseline.zip"
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-windows-x64.zip",
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-windows-x64-baseline.zip"
             ],
             "hash": [
-                "de2b10af15d183f707fbaed559b9178527e0ecb852dc961cbec1be8b2b90ca65",
-                "4e55d60ae214dea1c1d1a02e0a6e5e93828f20304343d847fe9a207ba2ca4cd2"
+                "0a0620930b6675d7ba440e81f4e0e00d3cfbe096c4b140d3fff02205e9e18922",
+                "538f9c846355d9e847b2671bc00c47da4229a0befb24df3282b739770f3b475f"
             ]
         },
         "arm64": {
-            "url": "https://github.com/oven-sh/bun/releases/download/canary/bun-windows-aarch64.zip",
-            "hash": "fdcdd259a84d74517c03133f50aa691e6b2efca6e23f647099b04ce63d4a796f"
+            "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-windows-aarch64.zip",
+            "hash": "89841f5a57f2348b67ec0839b718f4bf4ea7d07c371c9ba4b77b6c790f918953"
         }
     },
     "pre_install": [
@@ -70,35 +73,5 @@
     ],
     "uninstaller": {
         "script": "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
-    },
-    "checkver": {
-        "script": [
-            "$dl_url = 'https://github.com/oven-sh/bun/releases/download/canary/bun-windows-x64.zip'",
-            "$dl_path = cache_path 'bun-canary' 'unknown' $dl_url",
-            "$dl_dir = Split-Path -Path $dl_path -Parent",
-            "Invoke-WebRequest -Uri $dl_url -OutFile $dl_path",
-            "Expand-Archive -Path $dl_path -DestinationPath $dl_dir | Out-Null",
-            "$ver = & \"$dl_dir\\bun-windows-x64\\bun.exe\" --revision",
-            "Remove-Item -Path $dl_path, $dl_dir\\bun-windows-x64 -Recurse -Force",
-            "Write-Output $ver"
-        ],
-        "regex": "(?<version>\\S+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": [
-                    "https://github.com/oven-sh/bun/releases/download/canary/bun-windows-x64.zip",
-                    "https://github.com/oven-sh/bun/releases/download/canary/bun-windows-x64-baseline.zip"
-                ]
-            },
-            "arm64": {
-                "url": "https://github.com/oven-sh/bun/releases/download/canary/bun-windows-aarch64.zip"
-            }
-        },
-        "hash": {
-            "url": "https://api.github.com/repos/oven-sh/bun/releases/tags/canary",
-            "jsonpath": "$..assets[?(@.name == '$basename')].digest"
-        }
     }
 }
