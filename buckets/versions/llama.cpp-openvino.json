@@ -1,12 +1,12 @@
 {
     "version": "b9859",
-    "description": "Inference of LLaMA model in pure C/C++ (CUDA 13 version)",
-    "homepage": "https://llama.app",
+    "description": "Inference of LLaMA model in pure C/C++ (OpenVINO version)",
+    "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b9859/llama-b9859-bin-win-cuda-13.3-x64.zip",
-            "hash": "5bab577d1ac05f049b80489ec3db37ec544bbf9b50793a7842b1f4fed1f9bbd1"
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b9859/llama-b9859-bin-win-openvino-2026.2.1-x64.zip",
+            "hash": "2af2d6c5d92e37874dcdf598cf9c36615f9dc9d2425ed0e5d81c87b77beabab9"
         }
     },
     "bin": [
@@ -14,6 +14,8 @@
         "llama-bench.exe",
         "llama-cli.exe",
         "llama-completion.exe",
+        "llama-cvector-generator.exe",
+        "llama-export-lora.exe",
         "llama-fit-params.exe",
         "llama-gemma3-cli.exe",
         "llama-gguf-split.exe",
@@ -21,23 +23,27 @@
         "llama-llava-cli.exe",
         "llama-minicpmv-cli.exe",
         "llama-mtmd-cli.exe",
+        "llama-mtmd-debug.exe",
         "llama-perplexity.exe",
         "llama-quantize.exe",
         "llama-qwen2vl-cli.exe",
+        "llama-results.exe",
         "llama-server.exe",
+        "llama-template-analysis.exe",
         "llama-tokenize.exe",
-        "llama-tts.exe"
+        "llama-tts.exe",
+        "llama.exe"
     ],
     "persist": "models",
     "checkver": {
         "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases/latest",
         "jsonpath": "$.assets[*].browser_download_url",
-        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-cuda-(?<cuda>13\\.\\d+)-x64\\.zip"
+        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-openvino-(?<openvino>\\d+(?:\\.\\d+)+)-x64\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-cuda-$matchCuda-x64.zip"
+                "url": "https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-openvino-$matchOpenvino-x64.zip"
             }
         }
     }
