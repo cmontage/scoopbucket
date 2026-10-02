@@ -10,7 +10,7 @@
         },
         "32bit": {
             "url": "https://cli-assets.heroku.com/versions/11.10.1/c94de3c/heroku-v11.10.1-c94de3c-win32-x86.tar.xz#/dl.xz",
-            "hash": "4e8b7e9de2f3ff80a2973f8b34f3eb3f3e587b37838f72fe7f43329148a29fa0"
+            "hash": "e7dd32d10a0a5c5291e996578fa78f3792806d41b17734e47ef6c226f9a022b6"
         }
     },
     "pre_install": [
