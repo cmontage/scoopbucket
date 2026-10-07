@@ -1,16 +1,16 @@
 {
-    "version": "0.2.370",
+    "version": "0.2.374",
     "description": "Chainguard's command-line interface for managing container images, identity, and security configurations.",
     "homepage": "https://edu.chainguard.dev/chainguard/chainctl-usage/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://dl.enforce.dev/chainctl/0.2.370/chainctl_windows_x86_64.exe#/chainctl.exe",
-            "hash": "740b03bbe3720bbe089ebc5921937eab242becab1b8f29a2195ccc14fde1fd2d"
+            "url": "https://dl.enforce.dev/chainctl/0.2.374/chainctl_windows_x86_64.exe#/chainctl.exe",
+            "hash": "f167c27171c0753ae2db0c858bff156e94b7800e2be2957c9848a984a749c5ba"
         },
         "arm64": {
-            "url": "https://dl.enforce.dev/chainctl/0.2.370/chainctl_windows_arm64.exe#/chainctl.exe",
-            "hash": "576cc6c9f6c7a12a2804cdfe69d95ad357cafc2e283e1bec8ee48277784428fc"
+            "url": "https://dl.enforce.dev/chainctl/0.2.374/chainctl_windows_arm64.exe#/chainctl.exe",
+            "hash": "79f63cbc09abdab6a86c90aea3651b5198f0d5521cdae920e7e0c2d4a24cbe61"
         }
     },
     "bin": "chainctl.exe",
