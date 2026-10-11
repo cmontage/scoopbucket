@@ -1,23 +1,23 @@
 {
-    "version": "0.4.0",
+    "version": "0.6.0",
     "description": "Page layout and publishing; an open-source, clean-room reimplementation of Adobe InDesign, rebuilt in pure Rust",
     "homepage": "https://getartcraft.com/apps/designcraft",
     "license": "MIT|Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/storytold/designcraft/releases/download/v0.4.0/designcraft-0.4.0-windows-x64-portable.zip",
-            "hash": "dfc76a2a5428f02207a05e985319e36eba8f0e3c9a1eec5f80050c15047097b3",
-            "extract_dir": "designcraft-0.4.0-windows-x64-portable"
+            "url": "https://github.com/storytold/designcraft/releases/download/v0.6.0/designcraft-0.6.0-windows-x64-portable.zip",
+            "hash": "5aa989da1d401b5fa3573d4fb4dd3043ff5f7acc481df76193b9f707011a4391",
+            "extract_dir": "designcraft-0.6.0-windows-x64-portable"
         },
         "32bit": {
-            "url": "https://github.com/storytold/designcraft/releases/download/v0.4.0/designcraft-0.4.0-windows-x86-portable.zip",
-            "hash": "88a8e3669f7464f99c780e3466b9c8f08d3966b31e80bb1c85beca9133c520c5",
-            "extract_dir": "designcraft-0.4.0-windows-x86-portable"
+            "url": "https://github.com/storytold/designcraft/releases/download/v0.6.0/designcraft-0.6.0-windows-x86-portable.zip",
+            "hash": "e7ece7a4fb2c45f42635fa2d0bca4eb180501b633d5a2b35e4eab80f8bfe8da0",
+            "extract_dir": "designcraft-0.6.0-windows-x86-portable"
         },
         "arm64": {
-            "url": "https://github.com/storytold/designcraft/releases/download/v0.4.0/designcraft-0.4.0-windows-arm64-portable.zip",
-            "hash": "3746068c0c56625b98988e0c3e9a77ba3b0c2a5944934b93b2d75a1106671986",
-            "extract_dir": "designcraft-0.4.0-windows-arm64-portable"
+            "url": "https://github.com/storytold/designcraft/releases/download/v0.6.0/designcraft-0.6.0-windows-arm64-portable.zip",
+            "hash": "abce23cdeff98421fc3b8903cfdcfe4f97cc5b61157f59630e92c910a7c4ad94",
+            "extract_dir": "designcraft-0.6.0-windows-arm64-portable"
         }
     },
     "bin": "designcraft-cli.exe",

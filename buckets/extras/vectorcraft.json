@@ -1,23 +1,23 @@
 {
-    "version": "0.7.0",
+    "version": "0.9.0",
     "description": "Vector illustration; an open-source, clean-room reimplementation of Adobe Illustrator, rebuilt in pure Rust",
     "homepage": "https://getartcraft.com/apps/vectorcraft",
     "license": "MIT|Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/storytold/vectorcraft/releases/download/v0.7.0/vectorcraft-0.7.0-windows-x64-portable.zip",
-            "hash": "fcc95e2e5a3c3ea2249647b0ab26dff170227e7e4ed08234c6a6800ea4244ce3",
-            "extract_dir": "vectorcraft-0.7.0-windows-x64-portable"
+            "url": "https://github.com/storytold/vectorcraft/releases/download/v0.9.0/vectorcraft-0.9.0-windows-x64-portable.zip",
+            "hash": "474028c71d2ef045230d80e037cfe7e8745eeecd1a034412559e170859bb09ec",
+            "extract_dir": "vectorcraft-0.9.0-windows-x64-portable"
         },
         "32bit": {
-            "url": "https://github.com/storytold/vectorcraft/releases/download/v0.7.0/vectorcraft-0.7.0-windows-x86-portable.zip",
-            "hash": "9ddc53d744f8f247cc0f94b94bd08070c1b03d3e2b634bd2225e4c63a9d352b5",
-            "extract_dir": "vectorcraft-0.7.0-windows-x86-portable"
+            "url": "https://github.com/storytold/vectorcraft/releases/download/v0.9.0/vectorcraft-0.9.0-windows-x86-portable.zip",
+            "hash": "f6db07d2bca84db0248b5e9ee2d49962928a2490a78c1798a83747806a3d03e8",
+            "extract_dir": "vectorcraft-0.9.0-windows-x86-portable"
         },
         "arm64": {
-            "url": "https://github.com/storytold/vectorcraft/releases/download/v0.7.0/vectorcraft-0.7.0-windows-arm64-portable.zip",
-            "hash": "1248991447ab4abd2a479746ae21cf5f42216bc13ec0560f80e6427751acddac",
-            "extract_dir": "vectorcraft-0.7.0-windows-arm64-portable"
+            "url": "https://github.com/storytold/vectorcraft/releases/download/v0.9.0/vectorcraft-0.9.0-windows-arm64-portable.zip",
+            "hash": "1418833ad6ea8479bfce46e25136dbf9734c416739a533aedb392d2cc46c4617",
+            "extract_dir": "vectorcraft-0.9.0-windows-arm64-portable"
         }
     },
     "bin": "vectorcraft-cli.exe",

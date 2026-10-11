@@ -1,23 +1,23 @@
 {
-    "version": "0.3.0",
+    "version": "0.5.0",
     "description": "Computer-aided design and drafting; an open-source, clean-room reimplementation of Autodesk AutoCAD, rebuilt in pure Rust",
     "homepage": "https://github.com/storytold/cadcraft",
     "license": "MIT|Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/storytold/cadcraft/releases/download/v0.3.0/cadcraft-0.3.0-windows-x64-portable.zip",
-            "hash": "adfeb84955423f26d58b5ae0b36bb865d2d97f03b0c847bd8d82259d59dbfd69",
-            "extract_dir": "cadcraft-0.3.0-windows-x64-portable"
+            "url": "https://github.com/storytold/cadcraft/releases/download/v0.5.0/cadcraft-0.5.0-windows-x64-portable.zip",
+            "hash": "ce849d6ad1145a492b9b04bdab0ff36ee0e1cf72410d5e3a491ad006ff125614",
+            "extract_dir": "cadcraft-0.5.0-windows-x64-portable"
         },
         "32bit": {
-            "url": "https://github.com/storytold/cadcraft/releases/download/v0.3.0/cadcraft-0.3.0-windows-x86-portable.zip",
-            "hash": "bfa01f0aa9bf0db501a7f2f12946008377a609d42ba216629da647d5ba96f12b",
-            "extract_dir": "cadcraft-0.3.0-windows-x86-portable"
+            "url": "https://github.com/storytold/cadcraft/releases/download/v0.5.0/cadcraft-0.5.0-windows-x86-portable.zip",
+            "hash": "5002c97326e46493447d921a01946b65459340f129c00d5b3227790a26eebd89",
+            "extract_dir": "cadcraft-0.5.0-windows-x86-portable"
         },
         "arm64": {
-            "url": "https://github.com/storytold/cadcraft/releases/download/v0.3.0/cadcraft-0.3.0-windows-arm64-portable.zip",
-            "hash": "09e4ea0ad0fb4929515e8be4adf4853ee67997113a903d4f751a6ccc451ed6ce",
-            "extract_dir": "cadcraft-0.3.0-windows-arm64-portable"
+            "url": "https://github.com/storytold/cadcraft/releases/download/v0.5.0/cadcraft-0.5.0-windows-arm64-portable.zip",
+            "hash": "cc3724ea996d54d8317a73b3dad66bf361368d799bcb42b3a720501aa38f0a38",
+            "extract_dir": "cadcraft-0.5.0-windows-arm64-portable"
         }
     },
     "bin": "cadcraft-cli.exe",
