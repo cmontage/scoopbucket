@@ -1,16 +1,16 @@
 {
-    "version": "2.34.0",
+    "version": "2.36.0",
     "description": "Reasonix CLI, official CLI for Reasonix, a DeepSeek-native AI coding agent built to reduce API costs through aggressive context caching.",
     "homepage": "https://reasonix.io",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v2.34.0/reasonix-windows-amd64.zip",
-            "hash": "6a2b742daf9e8f96b3840f8a37d4d4d1d560df03f245f2c36c4f752ba32fc248"
+            "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v2.36.0/reasonix-windows-amd64.zip",
+            "hash": "e575f029d69ac719bf78b25c97745f7f45a0ee0fb478dc2e9e023c02edd9402f"
         },
         "arm64": {
-            "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v2.34.0/reasonix-windows-arm64.zip",
-            "hash": "d63ef66ec2cdefbdbc992252e96dd074b09d6e8ac66092f12f1afef8c322db4e"
+            "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v2.36.0/reasonix-windows-arm64.zip",
+            "hash": "3a0a27e2236edba155f8c171bead9fede814633c66b3ce99e48863495cfb8622"
         }
     },
     "bin": "reasonix.exe",
