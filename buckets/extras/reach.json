@@ -1,5 +1,5 @@
 {
-    "version": "0.8.4",
+    "version": "0.8.6",
     "description": "A modern, cross-platform SSH client and remote server management tool.",
     "homepage": "https://reachssh.com",
     "license": "MIT",
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/alexandrosnt/Reach/releases/download/v0.8.4/Reach_0.8.4_x64_en-US.msi",
-            "hash": "a0d6873e2bff3231f2c4dc001cbffcaad22318a6088e434d7ed4ce33c880bad1"
+            "url": "https://github.com/alexandrosnt/Reach/releases/download/v0.8.6/Reach_0.8.6_x64_en-US.msi",
+            "hash": "c2f3c3d9358f0b55c9a9bed9d08062ceb194383f12ec590cac1e8b56cb6f91d9"
         }
     },
     "extract_dir": "PFiles\\Reach",
