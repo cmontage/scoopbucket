@@ -1,20 +1,20 @@
 {
-    "version": "0.2.0",
+    "version": "0.4.0",
     "description": "CLI tool for migrating repositories, organizations, or entire installations from third-party Git hosting providers into Gitea.",
     "homepage": "https://gitea.com/gitea/importer",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gitea.com/gitea/importer/releases/download/v0.2.0/importer_Windows_x86_64.zip",
-            "hash": "908feb29333363c7d27aaa99ffbb2a5f09dd1ad051928315ca62db5d2abb0556"
+            "url": "https://gitea.com/gitea/importer/releases/download/v0.4.0/importer_Windows_x86_64.zip",
+            "hash": "9475c3c28f264611150c80f7347c52f5cec509a790e8f401a411e73341248fa9"
         },
         "32bit": {
-            "url": "https://gitea.com/gitea/importer/releases/download/v0.2.0/importer_Windows_i386.zip",
-            "hash": "199cae9815e034c21798f9c4d58a4990f04852b03b126942aeb1785152c8e6da"
+            "url": "https://gitea.com/gitea/importer/releases/download/v0.4.0/importer_Windows_i386.zip",
+            "hash": "e687de3a836852cb3dd6429a6ad97d49b44d50127f041502d6e1eebb7dd2ff74"
         },
         "arm64": {
-            "url": "https://gitea.com/gitea/importer/releases/download/v0.2.0/importer_Windows_arm64.zip",
-            "hash": "8b34f9ffda40b3f94ccd056869f1c9f9e56362673f6542261d8dfdd3d11a4798"
+            "url": "https://gitea.com/gitea/importer/releases/download/v0.4.0/importer_Windows_arm64.zip",
+            "hash": "d0bdeedf15b876a535e160382961fbe05984d4e1630aa74b576707748db79165"
         }
     },
     "bin": [
